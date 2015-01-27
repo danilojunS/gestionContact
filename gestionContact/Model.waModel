@@ -1,0 +1,96 @@
+﻿{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"Contact": {
+				"panelColor": "#D8D8D8",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 64,
+						"Y": 49
+					}
+				}
+			},
+			"ServiceGestionContact": {
+				"panelColor": "#548DD4",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 360,
+						"Y": 57
+					}
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 0,
+			"workspaceTop": 0,
+			"lastScriptLocation": {
+				"ServiceGestionContact": {
+					"method": "ServiceGestionContact/ServiceGestionContact-methods.js"
+				}
+			}
+		}
+	},
+	"dataClasses": [
+		{
+			"name": "Contact",
+			"className": "Contact",
+			"collectionName": "ContactCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "nom",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "prenom",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "ServiceGestionContact",
+			"className": "ServiceGestionContact",
+			"collectionName": "ServiceGestionContactCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				}
+			],
+			"methods": [
+				{
+					"name": "creerContact",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceGestionContact.methods.creerContact",
+					"userDefined": true
+				}
+			]
+		}
+	]
+}

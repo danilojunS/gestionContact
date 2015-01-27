@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><permissions>
+	<allow action="promote" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.ServiceGestionContact.creerContact" temporaryForcePermissions="false" type="method"/>
+	<allow action="create" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.Contact" temporaryForcePermissions="false" type="dataClass"/>
+	<allow action="update" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.Contact" temporaryForcePermissions="false" type="dataClass"/>
+	<allow action="remove" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.Contact" temporaryForcePermissions="false" type="dataClass"/>
+	<allow action="execute" groupName="DataSteward" groupID="DD85E2A4C3294C6B90793AB4F7E19B15" resource="Model.ServiceGestionContact" temporaryForcePermissions="false" type="dataClass"/>
+	<allow action="execute" groupName="DataSteward" groupID="DD85E2A4C3294C6B90793AB4F7E19B15" resource="Model.ServiceGestionContact.creerContact" temporaryForcePermissions="false" type="method"/>
+</permissions>

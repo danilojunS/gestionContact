@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="styles/login.css">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-8 col-md-offset-2">
+      <h1 class="text-center login-title">Sign in to continue to myLogin</h1>
+      <div class="account-wall">
+        <img class="profile-img" src="images/user_photo.png" alt="User photo">
+        <form class="form-signin" ng-submit="login(credentials)" novalidate>
+          <input type="text" class="form-control" placeholder="Email" ng-model="credentials.email" required autofocus>
+          <input type="password" class="form-control" placeholder="Password" ng-model="credentials.password" required>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Sign in</button>
+          <label class="checkbox pull-left">
+            <input type="checkbox" value="remember-me">
+            Remember me
+          </label>
+          <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+        </form>
+      </div>
+      <a href="#" class="text-center new-account">Create an account </a>
+    </div>
+  </div>
+</div>
