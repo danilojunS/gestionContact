@@ -17,22 +17,33 @@ angular.module('gestionContactApp')
 
     $scope.login = function (credentials) {
 
-      authenticationService.login(credentials).then(function (user) {
-        console.log('login success');
+      authenticationService.login(credentials).then(function (loginResult) {
+        if (loginResult) {
+          console.log('login success');
 
-        console.log(user);
+          $wakanda.$currentUser().then(function (user) {
+            console.log('After login - Current user: ');
+            console.log(user);
+          });
+
+          // $wakanda.$logout();
+          
+          $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+        } else {
+
+          console.log('login failed: invalid name or password');
+          $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
         
-        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-
+        }
       }, function () {
         console.log('login error');
-
-        $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-
-      });
-
-      
-      
+        $rootScope.$broadcast(AUTH_EVENTS.loginError);
+      });      
     };
+
+    $wakanda.$currentUser().then(function(user) {
+      console.log('Before login - Current User is: ');
+      console.log(user);
+    });
 
   });

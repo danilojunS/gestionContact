@@ -17,17 +17,15 @@ angular.module('gestionContactApp')
       return $wakanda.$loginByPassword(credentials.email, credentials.password).then(function (loginResult) {
         if (loginResult.result === true) {
           
-          console.log('Wakanda login success');
+          console.log('Wakanda: login success');
           
-
-          
-
           // sessionService.create(res.data.id, res.data.user.id, res.data.user.role);
-          
           // return res.data.user;
+          return true;
 
         } else {
-          console.log('Wakanda login fail');
+          console.log('Wakanda: login failed');
+          return false;
         }
       });
 

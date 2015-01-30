@@ -1,7 +1,14 @@
 ﻿
 
-loginByPassword('Jane','a');
+//loginByPassword('Jane','a');
 
 //ds.Contact.all();
 
-ds.ServiceGestionContact.creerContact("qsdqs", "dsqdqs");
+//ds.ServiceGestionContact.creerContact("qsdqs", "dsqdqs");
+
+//var arrStop = getUserSessions();
+//arrStop.forEach(function(item) {
+//    item.forceExpire();
+//});
+
+getUserSessions();

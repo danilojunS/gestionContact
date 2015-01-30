@@ -22,7 +22,8 @@ angular
   ])
   .constant('AUTH_EVENTS', {
     loginSuccess: 'auth-login-success',
-    loginFailed: 'auth-login-failed',
+    loginError: 'auth-login-error',                 // some error in login process
+    loginFailed: 'auth-login-failed',               // invalid name or password
     logoutSuccess: 'auth-logout-success',
     sessionTimeout: 'auth-session-timeout',
     notAuthenticated: 'auth-not-authenticated',
