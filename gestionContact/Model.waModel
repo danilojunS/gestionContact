@@ -1,4 +1,4 @@
-﻿{
+{
 	"toJSON": true,
 	"extraProperties": {
 		"version": "2",
@@ -23,12 +23,23 @@
 						"Y": 54
 					}
 				}
+			},
+			"Owner": {
+				"panelColor": "#C3D69B",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 366,
+						"Y": 232
+					},
+					"pathVisible": true
+				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 60,
-			"workspaceTop": 38,
+			"workspaceLeft": 0,
+			"workspaceTop": 0,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
 					"method": "ServiceGestionContact/ServiceGestionContact-methods.js"
@@ -89,6 +100,50 @@
 					"scope": "public",
 					"from": "$mainModel.ServiceGestionContact.methods.creerContact",
 					"userDefined": true
+				}
+			]
+		},
+		{
+			"collectionName": "OwnerCollection",
+			"className": "Owner",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "long",
+					"autosequence": "true",
+					"unique": "true",
+					"primKey": "true"
+				},
+				{
+					"name": "nom",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "prenom",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "login",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "password",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "accessLevel",
+					"scope": "public",
+					"type": "long",
+					"kind": "storage"
 				}
 			]
 		}
