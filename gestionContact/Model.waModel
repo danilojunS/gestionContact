@@ -19,16 +19,16 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 360,
-						"Y": 57
+						"X": 311,
+						"Y": 54
 					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 0,
-			"workspaceTop": 0,
+			"workspaceLeft": 60,
+			"workspaceTop": 38,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
 					"method": "ServiceGestionContact/ServiceGestionContact-methods.js"
@@ -92,5 +92,6 @@
 				}
 			]
 		}
-	]
+	],
+	"type": []
 }

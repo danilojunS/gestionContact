@@ -17,7 +17,6 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
     'wakanda'
   ])
   .constant('AUTH_EVENTS', {

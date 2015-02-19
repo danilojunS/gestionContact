@@ -30,7 +30,8 @@
 				ID: userID, //UUID (converted if necessary)
 				name: userName, //user login
 				fullName: userName, //friendly display name
-				belongsTo: theGroups
+				belongsTo: theGroups,
+				storage: { test: 1, test2: "aaa" }
 			}; //array of groups
 			return user;
 		} else

@@ -19,5 +19,7 @@
   "smarttabs": true,
   "globals": {
     "angular": false
-  }
+  },
+  "devel": true,
+  "latedef": "nofunc"
 }
