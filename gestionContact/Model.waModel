@@ -1,4 +1,4 @@
-{
+﻿{
 	"toJSON": true,
 	"extraProperties": {
 		"version": "2",
@@ -9,8 +9,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 64,
-						"Y": 49
+						"X": 80,
+						"Y": 54
 					}
 				}
 			},
@@ -28,18 +28,18 @@
 				"panelColor": "#C3D69B",
 				"panel": {
 					"isOpen": "true",
+					"pathVisible": true,
 					"position": {
-						"X": 366,
-						"Y": 232
-					},
-					"pathVisible": true
+						"X": 328,
+						"Y": 280
+					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 0,
-			"workspaceTop": 0,
+			"workspaceLeft": 50,
+			"workspaceTop": 15,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
 					"method": "ServiceGestionContact/ServiceGestionContact-methods.js"
@@ -78,6 +78,53 @@
 			]
 		},
 		{
+			"name": "Owner",
+			"className": "Owner",
+			"collectionName": "OwnerCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "nom",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "prenom",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "login",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "password",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "accessLevel",
+					"kind": "storage",
+					"scope": "public",
+					"type": "long"
+				}
+			]
+		},
+		{
 			"name": "ServiceGestionContact",
 			"className": "ServiceGestionContact",
 			"collectionName": "ServiceGestionContactCollection",
@@ -100,53 +147,22 @@
 					"scope": "public",
 					"from": "$mainModel.ServiceGestionContact.methods.creerContact",
 					"userDefined": true
-				}
-			]
-		},
-		{
-			"collectionName": "OwnerCollection",
-			"className": "Owner",
-			"attributes": [
-				{
-					"name": "ID",
-					"kind": "storage",
-					"type": "long",
-					"autosequence": "true",
-					"unique": "true",
-					"primKey": "true"
 				},
 				{
-					"name": "nom",
+					"name": "modifierContact",
+					"applyTo": "dataClass",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"from": "$mainModel.ServiceGestionContact.methods.modifierContact",
+					"userDefined": true
 				},
 				{
-					"name": "prenom",
+					"name": "supprimerContact",
+					"applyTo": "dataClass",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
-				},
-				{
-					"name": "login",
-					"scope": "public",
-					"type": "string",
-					"kind": "storage"
-				},
-				{
-					"name": "password",
-					"scope": "public",
-					"type": "string",
-					"kind": "storage"
-				},
-				{
-					"name": "accessLevel",
-					"scope": "public",
-					"type": "long",
-					"kind": "storage"
+					"from": "$mainModel.ServiceGestionContact.methods.supprimerContact",
+					"userDefined": true
 				}
 			]
 		}
-	],
-	"type": []
+	]
 }

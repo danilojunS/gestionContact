@@ -30,7 +30,8 @@ angular.module('gestionContactApp')
 
     function removeContact(contact) {
       console.log('Suppression de contact.');
-      contact.$remove().then(function () {
+      $wakanda.$ds.ServiceGestionContact.supprimerContact(contact.ID).then(function (result) {
+        console.log(result);
         $scope.contacts = $wakanda.$ds.Contact.$find({});
       });
     }
@@ -47,13 +48,17 @@ angular.module('gestionContactApp')
       if($scope.newContact.nom !== '' && $scope.newContact.prenom !== '') {
           if ($scope.newContact.ID === '') {
             console.log('Création de contact.');
-            $wakanda.$ds.ServiceGestionContact.creerContact($scope.newContact.nom, $scope.newContact.prenom);
+            $wakanda.$ds.ServiceGestionContact.creerContact($scope.newContact.nom, $scope.newContact.prenom).then(function (result) {
+              console.log(result);
+              $scope.contacts = $wakanda.$ds.Contact.$find({});
+            });
           } else {
             console.log('Mise à jour de contact.');
-            //$wakanda.$ds.ServiceGestionContact.mettreAJourContact($scope.newContact.ID, $scope.newContact.nom, $scope.newContact.prenom);
+            $wakanda.$ds.ServiceGestionContact.modifierContact($scope.newContact.ID, $scope.newContact.nom, $scope.newContact.prenom).then(function (result) {
+              console.log(result);
+              $scope.contacts = $wakanda.$ds.Contact.$find({});
+            });
           }
-
-          $scope.contacts = $wakanda.$ds.Contact.$find({});
       } else {
         alert('Remplir les deux champs : Nom et Prénom');
       }
