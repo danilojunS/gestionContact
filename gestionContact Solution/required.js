@@ -1,7 +1,7 @@
 ﻿function myLogin(userName, password) //simple login listener
 {
 	var theUser = directory.internalStore.User({name: userName});
-	if (theUSer != null) //user exists  in the directory
+	if (theUser != null) //user exists  in the directory
 		return false; // allow directory authentication
 	else
 	{
