@@ -1,4 +1,13 @@
 ﻿
+//currentSession()
+
+//currentUser()
+
+//logout()
+
+//loginByPassword('Jane','a');
+
+getUserSessions();
 
 //loginByPassword("Jane","a");
 
@@ -11,11 +20,11 @@
 
 //var contact = ds.Contact.find("ID = " + 8);
 //contact.remove();
-
+ /*
 var contact = new ds.Contact();
 contact.nom = "Mary";
 contact.prenom = "Mary";
-contact.save();
+contact.save();*/
 
 //var arrStop = getUserSessions();
 //arrStop.forEach(function(item) {

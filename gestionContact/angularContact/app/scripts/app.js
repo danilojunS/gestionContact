@@ -29,6 +29,7 @@ angular
     notAuthorized: 'auth-not-authorized'
   })
   .constant('USER_ROLES', {
+    admin: 'admin',
     businessAnalytics: 'user-business-analytics',
     dataSteward: 'user-data-steward'
   })
@@ -58,6 +59,7 @@ angular
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
+        //resolve: routeResolver
       })
       .when('/notAuthorized', {
         templateUrl: 'views/notauthorized.html',

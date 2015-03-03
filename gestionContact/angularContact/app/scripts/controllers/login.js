@@ -16,15 +16,14 @@ angular.module('gestionContactApp')
     };
 
     $scope.login = function (credentials) {
+        authenticationService.login(credentials).then(function (loginResult) {
+          if (loginResult) {
+            console.log('login success');
 
-      authenticationService.login(credentials).then(function (loginResult) {
-        if (loginResult) {
-          console.log('login success');
-
-          $wakanda.$currentUser().then(function (user) {
-            console.log('After login - Current user: ');
-            console.log(user);
-          });
+            $wakanda.$currentUser().then(function (user) {
+              console.log('After login - Current user: ');
+              console.log(user);
+          }); 
 
           // $wakanda.$logout();
           
@@ -38,8 +37,10 @@ angular.module('gestionContactApp')
       }, function () {
         console.log('login error');
         $rootScope.$broadcast(AUTH_EVENTS.loginError);
-      });      
-    };
+      }); 
+
+    }; 
+      
 
     $wakanda.$currentUser().then(function(user) {
       console.log('Before login - Current User is: ');
