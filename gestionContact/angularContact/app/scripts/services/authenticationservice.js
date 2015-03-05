@@ -8,53 +8,70 @@
  * Service in the gestionContactApp.
  */
 angular.module('gestionContactApp')
-  .service('authenticationService', function ($http, $q, sessionService, $wakanda) {
+  .service('authenticationService', function ($http, $q, sessionService) {
 
     var authService = {};
 
     authService.login = function (credentials) {
 
-      return $wakanda.$loginByPassword(credentials.email, credentials.password).then(function (loginResult) {
-        if (loginResult.result === true) {
+      // return $wakanda.$loginByPassword(credentials.email, credentials.password).then(function (loginResult) {
+      //   if (loginResult.result === true) {
           
-          console.log('Wakanda: login success');
+      //     console.log('Wakanda: login success');
           
-          // sessionService.create(res.data.id, res.data.user.id, res.data.user.role);
-          // return res.data.user;
-          return true;
+      //     // sessionService.create(res.data.id, res.data.user.id, res.data.user.role);
+      //     // return res.data.user;
+      //     return true;
 
-        } else {
-          console.log('Wakanda: login failed');
-          return false;
-        }
-      });
+      //   } else {
+      //     console.log('Wakanda: login failed');
+      //     return false;
+      //   }
+      // });
 
-      // return $q(function(resolve, reject) {
-      //     setTimeout(function() {
-      //       if (credentials.email === 'user' && credentials.password === '123') {
+      return $q(function(resolve, reject) {
+          setTimeout(function() {
+            var res;
 
-      //     var res = {
-      //         data : {
-      //           id: 'dataID',
-      //           user: {
-      //             id: 'userID',
-      //             name: 'User Test',
-      //             role: 'admin'
-      //           }
-      //         }
-      //       };
+            if (credentials.email === 'ba' && credentials.password === 'a') {
 
-      //       resolve(res);
+              res = {
+                data : {
+                  id: 'session-ba',
+                  user: {
+                    id: 'business-analytics',
+                    name: 'Business Analytics',
+                    role: 'user-business-analytics'
+                  }
+                }
+              };
 
-      //       } else {
-      //         reject('It broke');
-      //       }
-      //     }, 1000);
-      //   }).then(function (res) {
-      //     sessionService.create(res.data.id, res.data.user.id, res.data.user.role);
+              resolve(res);
 
-      //     return res.data.user;
-      //   });
+            } else if (credentials.email === 'ds' && credentials.password === 'a') {
+
+              res = {
+                data : {
+                  id: 'session-ds',
+                  user: {
+                    id: 'data-steward',
+                    name: 'Data Steward',
+                    role: 'user-data-steward'
+                  }
+                }
+              };
+
+              resolve(res);
+
+            } else {
+              reject('It broke');
+            }
+          }, 1000);
+        }).then(function (res) {
+          sessionService.create(res.data.id, res.data.user.id, res.data.user.name, res.data.user.role);
+
+          return res.data.user;
+        });
 
       // return $http
      //      .post('data/user.php', credentials)

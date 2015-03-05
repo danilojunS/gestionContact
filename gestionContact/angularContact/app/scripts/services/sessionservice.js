@@ -13,27 +13,36 @@ angular.module('gestionContactApp')
     var session = {};
 
     var id = null;
-    var userId = null;
-    var userRole = null;
+    var user = {
+      id: null,
+      name: null,
+      role: null
+    };
 
-    session.create = function (newSessionId, newUserId, newUserRole) {
+    session.create = function (newSessionId, userId, userName, userRole) {
       id = newSessionId;
-      userId = newUserId;
-      userRole = newUserRole;
+      user.id = userId;
+      user.name = userName;
+      user.role = userRole;
     };
 
     session.destroy = function () {
       id = null;
-      userId = null;
-      userRole = null;
+      user.id = null;
+      user.name = null;
+      user.role = null;
     };
 
     session.getUserId = function () {
-      return userId;
+      return user.id;
+    };
+
+    session.getUserName = function () {
+      return user.name;
     };
 
     session.getUserRole = function () {
-      return userRole;
+      return user.role;
     };
 
     return session;

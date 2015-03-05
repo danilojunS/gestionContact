@@ -45,7 +45,7 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        authorizedRoles: [USER_ROLES.businessAnalytics]
+        authorizedRoles: [USER_ROLES.businessAnalytics, USER_ROLES.dataSteward]
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -65,11 +65,28 @@ angular
         templateUrl: 'views/notauthorized.html',
         controller: 'NotauthorizedCtrl'
       })
+      .when('/businessAnalyticsSpace', {
+        templateUrl: 'views/businessanalyticsspace.html',
+        controller: 'BusinessAnalyticsSpaceCtrl',
+        authorizedRoles: [USER_ROLES.businessAnalytics]
+      })
+      .when('/dataStewardSpace', {
+        templateUrl: 'views/datastewardspace.html',
+        controller: 'DataStewardSpaceCtrl',
+        authorizedRoles: [USER_ROLES.dataSteward]
+      })
+      .when('/commonSpace', {
+        templateUrl: 'views/commonspace.html',
+        controller: 'CommonSpaceCtrl',
+        authorizedRoles: [USER_ROLES.businessAnalytics, USER_ROLES.dataSteward]
+      })
       .otherwise({
         redirectTo: '/'
       });
   })
-  .run(function ($route, $rootScope, $location, AUTH_EVENTS, authenticationService) {
+  .run(function ($route, $rootScope, $location, AUTH_EVENTS, authenticationService, USER_ROLES) {
+
+    $rootScope.userRoles = USER_ROLES;
 
     var pathAfterLogin = '/';  // path to where redirect the user after the login
 
@@ -104,13 +121,14 @@ angular
 
     // redirect to page after login
     $rootScope.$on(AUTH_EVENTS.loginSuccess, function () {
-      $location.path(pathAfterLogin);
+      var path = pathAfterLogin;
       pathAfterLogin = '/';
+      $location.path(path);
     });
 
     // redirect to main page after logout
     $rootScope.$on(AUTH_EVENTS.logoutSuccess, function () {
-      $location.path('/');
+      $location.path('/#');
     });
 
   });

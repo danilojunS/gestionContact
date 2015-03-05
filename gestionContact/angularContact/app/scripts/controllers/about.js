@@ -8,12 +8,6 @@
  * Controller of the gestionContactApp
  */
 angular.module('gestionContactApp')
-  .controller('AboutCtrl', function ($scope, $wakanda) {
+  .controller('AboutCtrl', function () {
     
-
-    console.log($wakanda.$currentUser());
-        $wakanda.$currentUser().then(function (currentUser) {
-            console.log('Current User :');
-            console.log(currentUser);
-          });
   });

@@ -1,0 +1,11 @@
+.glyphicon {
+  font-size: 100px;
+  display:block;
+  margin-top: 30px;
+  margin-bottom:30px;
+  text-align:center;
+}
+
+#not-authorized-msg p {
+  text-align: center;
+}

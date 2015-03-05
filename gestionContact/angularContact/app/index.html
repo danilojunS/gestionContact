@@ -21,23 +21,42 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">gestionContact</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li user-menu></li>
+            <li><a ng-href="#/">Home</a></li>
+            <li><a ng-href="#/contacts">Contacts</a></li>
+            <li><a ng-href="#/about">About</a></li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Spaces <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a ng-href="#/businessAnalyticsSpace">Business Analytics</a></li>
+                <li><a ng-href="#/dataStewardSpace">Data Steward</a></li>
+                <li><a ng-href="#/commonSpace">BA & DS</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#/">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#/contacts">Contacts</a></li>
-        </ul>
-        <h3 class="text-muted">gestionContact</h3>
-      </div>
-
       <div ng-view=""></div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team & the Wakanda team</p>
-      </div>
     </div>
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -82,6 +101,11 @@
         <script src="scripts/services/sessionservice.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/notauthorized.js"></script>
+        <script src="scripts/directives/roleshow.js"></script>
+        <script src="scripts/controllers/businessanalyticsspace.js"></script>
+        <script src="scripts/controllers/datastewardspace.js"></script>
+        <script src="scripts/controllers/commonspace.js"></script>
+        <script src="scripts/directives/usermenu.js"></script>
         <!-- endbuild -->
 </body>
 </html>

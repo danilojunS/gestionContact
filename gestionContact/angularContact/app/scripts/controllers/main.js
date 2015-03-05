@@ -8,6 +8,6 @@
  * Controller of the gestionContactApp
  */
 angular.module('gestionContactApp')
-  .controller('MainCtrl', function ($scope) {
-    
+  .controller('MainCtrl', function ($scope, sessionService) {
+    $scope.userName = sessionService.getUserName();
   });

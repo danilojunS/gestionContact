@@ -8,6 +8,6 @@
  * Controller of the gestionContactApp
  */
 angular.module('gestionContactApp')
-  .controller('NotauthorizedCtrl', function ($scope) {
+  .controller('NotauthorizedCtrl', function () {
     
   });
