@@ -63,6 +63,21 @@ angular.module('gestionContactApp')
 
               resolve(res);
 
+            } else if (credentials.email === 'nr' && credentials.password === 'a') {
+
+              res = {
+                data : {
+                  id: 'session-nr',
+                  user: {
+                    id: 'no-role',
+                    name: 'No Role',
+                    role: null
+                  }
+                }
+              };
+
+              resolve(res);
+
             } else {
               reject('It broke');
             }

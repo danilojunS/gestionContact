@@ -29,7 +29,7 @@ angular
     notAuthorized: 'auth-not-authorized'
   })
   .constant('USER_ROLES', {
-    admin: 'admin',
+    admin: 'user-admin',
     businessAnalytics: 'user-business-analytics',
     dataSteward: 'user-data-steward'
   })
@@ -45,7 +45,7 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        authorizedRoles: [USER_ROLES.businessAnalytics, USER_ROLES.dataSteward]
+        authorizedRoles: '*'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -80,6 +80,10 @@ angular
         controller: 'CommonSpaceCtrl',
         authorizedRoles: [USER_ROLES.businessAnalytics, USER_ROLES.dataSteward]
       })
+      .when('/myProfile', {
+        templateUrl: 'views/myprofile.html',
+        controller: 'MyprofileCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -95,7 +99,16 @@ angular
       var authorizedRoles = next.authorizedRoles;
 
       if (authorizedRoles) {
-        if (!authenticationService.isAuthorized(authorizedRoles)) {
+        if (authorizedRoles === '*') {
+          if (!authenticationService.isAuthenticated()) {
+            event.preventDefault();
+            $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+            pathAfterLogin = next.originalPath;                     // save path that the user wants to access after the login
+            $location.path('/login');                               // redirect user to login page
+
+            console.log('user is not logged in');
+          }
+        } else if (!authenticationService.isAuthorized(authorizedRoles)) {
           
           event.preventDefault();
 
