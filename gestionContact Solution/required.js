@@ -48,14 +48,14 @@ function myLogin2(userName, password)
 	{
 		var result = {error: 1024, errorMessage: 'InvalidLogin'};
 		var contactDS = solution.getApplicationByName("gestionContact").ds;
-		var theOwner = contactDS.Owner({login:userName});
-		if(theOwner != null)
+		var theUser = contactDS.User({login:userName});
+		if(theUser != null)
 		{
-			if(theEmployee.password === directory.computeHA1(userName,password))
+			if(theUser.password === password /*directory.computeHA1(userName,password)*/)
 			{
 				var theGroups = [];
-				var putIntoStorage = {myId: theOwner.ID};
-				switch (theOwner.accessLevel){
+				var putIntoStorage = {myId: theUser.ID};
+				switch (theUser.accessLevel){
 					case 1:
 						theGroups = ['Admin'];
 						break;
@@ -66,13 +66,15 @@ function myLogin2(userName, password)
 						theGroups = ['BusinessAalyst'];
 						break;
 				}
+				
+				result = {
+					ID: theUser.ID,
+					name: theUser.login,
+					fullName: theUser.nom + ' ' + theUser.prenom,
+					belongsTo: theGroups,
+					storage: putIntoStorage
+				};
 			}
-			result = {
-				ID: theOwner.ID,
-				name: theOwner.login,
-				fullName: theEmployee.firstName + '' + theEmployee.lastName,
-				belongsTo: theGroups,
-				storage: putIntoStorage};
 		}
 	}
 	return result;

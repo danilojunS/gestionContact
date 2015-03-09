@@ -24,25 +24,28 @@
 					}
 				}
 			},
-			"Owner": {
+			"User": {
 				"panelColor": "#C3D69B",
 				"panel": {
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 328,
-						"Y": 280
+						"X": 321,
+						"Y": 283
 					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 50,
-			"workspaceTop": 15,
+			"workspaceLeft": 136,
+			"workspaceTop": 0,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
 					"method": "ServiceGestionContact/ServiceGestionContact-methods.js"
+				},
+				"User": {
+					"method": "User/User-methods.js"
 				}
 			}
 		}
@@ -74,53 +77,6 @@
 					"kind": "storage",
 					"scope": "public",
 					"type": "string"
-				}
-			]
-		},
-		{
-			"name": "Owner",
-			"className": "Owner",
-			"collectionName": "OwnerCollection",
-			"scope": "public",
-			"attributes": [
-				{
-					"name": "ID",
-					"kind": "storage",
-					"scope": "public",
-					"unique": true,
-					"autosequence": true,
-					"type": "long",
-					"primKey": true
-				},
-				{
-					"name": "nom",
-					"kind": "storage",
-					"scope": "public",
-					"type": "string"
-				},
-				{
-					"name": "prenom",
-					"kind": "storage",
-					"scope": "public",
-					"type": "string"
-				},
-				{
-					"name": "login",
-					"kind": "storage",
-					"scope": "public",
-					"type": "string"
-				},
-				{
-					"name": "password",
-					"kind": "storage",
-					"scope": "public",
-					"type": "string"
-				},
-				{
-					"name": "accessLevel",
-					"kind": "storage",
-					"scope": "public",
-					"type": "long"
 				}
 			]
 		},
@@ -163,6 +119,55 @@
 					"userDefined": true
 				}
 			]
+		},
+		{
+			"name": "User",
+			"className": "User",
+			"collectionName": "UserCollection",
+			"matchTable": "Owner",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "nom",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "prenom",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "login",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "password",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "accessLevel",
+					"kind": "storage",
+					"scope": "public",
+					"type": "long"
+				}
+			],
+			"methods": []
 		}
 	]
 }

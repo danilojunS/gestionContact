@@ -11,6 +11,7 @@ angular.module('gestionContactApp')
     return {
       templateUrl: 'views/usermenu.html',
       restrict: 'A',
+      scope: {}, // isolate the scope
       link: function postLink(scope) {
         scope.userName = sessionService.getUserName();
 

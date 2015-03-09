@@ -45,7 +45,7 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        authorizedRoles: '*'
+        authorizedRoles: '*'      // it means that the user must be logged to see this page (all roles can see this page)
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -58,8 +58,8 @@ angular
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-        //resolve: routeResolver
+        controller: 'LoginCtrl',
+        resolve: routeResolver
       })
       .when('/notAuthorized', {
         templateUrl: 'views/notauthorized.html',
@@ -84,6 +84,12 @@ angular
         templateUrl: 'views/myprofile.html',
         controller: 'MyprofileCtrl'
       })
+      .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl',
+        authorizedRoles: [USER_ROLES.admin],
+        resolve: routeResolver
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -102,6 +108,7 @@ angular
         if (authorizedRoles === '*') {
           if (!authenticationService.isAuthenticated()) {
             event.preventDefault();
+
             $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
             pathAfterLogin = next.originalPath;                     // save path that the user wants to access after the login
             $location.path('/login');                               // redirect user to login page

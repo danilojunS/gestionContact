@@ -14,20 +14,20 @@ angular.module('gestionContactApp')
 
     authService.login = function (credentials) {
 
-      // return $wakanda.$loginByPassword(credentials.email, credentials.password).then(function (loginResult) {
-      //   if (loginResult.result === true) {
+    //   return $wakanda.$loginByPassword(credentials.email, credentials.password).then(function (loginResult) {
+    //     if (loginResult.result === true) {
           
-      //     console.log('Wakanda: login success');
+    //       console.log('Wakanda: login success');
           
-      //     // sessionService.create(res.data.id, res.data.user.id, res.data.user.role);
-      //     // return res.data.user;
-      //     return true;
+    //       // sessionService.create(res.data.id, res.data.user.id, res.data.user.role);
+    //       // return res.data.user;
+    //       return true;
 
-      //   } else {
-      //     console.log('Wakanda: login failed');
-      //     return false;
-      //   }
-      // });
+    //     } else {
+    //       console.log('Wakanda: login failed');
+    //       return false;
+    //     }
+    //   });
 
       return $q(function(resolve, reject) {
           setTimeout(function() {
@@ -78,6 +78,21 @@ angular.module('gestionContactApp')
 
               resolve(res);
 
+            } else if (credentials.email === 'ad' && credentials.password === 'a') {
+
+              res = {
+                data : {
+                  id: 'session-ad',
+                  user: {
+                    id: 'admin',
+                    name: 'Admin',
+                    role: 'user-admin'
+                  }
+                }
+              };
+
+              resolve(res);
+
             } else {
               reject('It broke');
             }
@@ -87,21 +102,14 @@ angular.module('gestionContactApp')
 
           return res.data.user;
         });
-
-      // return $http
-     //      .post('data/user.php', credentials)
-     //      .then(function (res) {
-
-     //       console.log(res);
-
-     //        sessionService.create(res.data.id, res.data.user.id,
-     //                       res.data.user.role);
-     //        return res.data.user;
-     //      });
     };
 
     authService.logout = function () {
       
+      // return $wakanda.$logout().then(function() {
+      //   sessionService.destroy();
+      // });
+
       return $q(function(resolve) {
         setTimeout(function() {
           resolve();

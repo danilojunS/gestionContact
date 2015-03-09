@@ -11,6 +11,7 @@ angular.module('gestionContactApp')
     return {
       // template: '<div></div>',
       restrict: 'A',
+      scope: {}, // isolate the scope
       link: function postLink(scope, element, attrs) {
         element.hide(); // element is normally hidden
         var roles = attrs.roleShow.replace(/\s+/g, '').split(','); // remove spaces of the string and transform it into an array

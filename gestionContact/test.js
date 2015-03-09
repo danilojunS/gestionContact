@@ -7,7 +7,7 @@
 
 //loginByPassword('Jane','a');
 
-getUserSessions();
+//getUserSessions();
 
 //loginByPassword("Jane","a");
 
@@ -31,4 +31,10 @@ contact.save();*/
 //    item.forceExpire();
 //});
 
-//getUserSessions();
+getUserSessions();
+
+//loginByPassword('user1','a');
+//currentUser();
+//currentSession();
+//logout();
+
