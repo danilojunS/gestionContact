@@ -30,15 +30,15 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 321,
-						"Y": 283
+						"X": 334,
+						"Y": 294
 					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 136,
+			"workspaceLeft": 0,
 			"workspaceTop": 0,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
@@ -166,8 +166,8 @@
 					"scope": "public",
 					"type": "long"
 				}
-			],
-			"methods": []
+			]
 		}
-	]
+	],
+	"type": []
 }

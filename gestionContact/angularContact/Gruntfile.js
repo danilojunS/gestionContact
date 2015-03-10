@@ -109,10 +109,7 @@ module.exports = function (grunt) {
           port: '<%= wakandaApp.port %>',
           https: false,
           changeOrigin: false,
-          xforward: false,
-          headers:{
-            host : '<%= wakandaApp.host %>'
-          }
+          xforward: false
         }
       ],
       options: {

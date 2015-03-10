@@ -1,0 +1,17 @@
+
+<li data-ng-hide="userName">
+  <a ng-href="#/login" href="#/login">
+    <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="margin-right:10px;"></span>Login
+  </a>
+</li>
+
+<li data-ng-show="userName" class="active">
+  <a ng-href="#/myProfile" href="#/myProfile">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{userName}}
+  </a>
+</li>
+<li data-ng-show="userName">
+  <a href="" ng-click="logout()">
+    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout
+  </a>
+</li>
