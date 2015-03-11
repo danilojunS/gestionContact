@@ -1,53 +1,74 @@
-﻿importScripts("libs/promise-6.1.0.min.js");
-
+﻿
 model.ServiceGestionContact.methods.creerContact = function(nom, prenom) {
 	
-	return new Promise(function (resolve, reject) {
-		var contact = new ds.Contact();
-		contact.nom = nom;
-		contact.prenom = prenom;
-		
-		try {
-			contact.save();
-			resolve("Contact created successfully.");
-		} catch (e) {
-			reject("Cannot create contact: "+ e.message);
-		}
-	});
+	var contact = new ds.Contact();
+	contact.nom = nom;
+	contact.prenom = prenom;
+	
+	var result = {
+		result: false,
+		message: "ERROR : Unknown"
+	};
+	
+	try {
+		contact.save();
+		result.result = true;
+		result.message = "Contact créé";
+	} catch (e) {
+		result.result = false;
+		result.message = "ERROR : Contact pas créé";
+	} finally {
+		return result;
+	}
 	
 };
 model.ServiceGestionContact.methods.creerContact.scope = "public";
 
 
-model.ServiceGestionContact.methods.supprimerContact = function(id, callback) {
-	return new Promise(function (resolve, reject) {
-		var contact = ds.Contact.find("ID = " + id);
+model.ServiceGestionContact.methods.supprimerContact = function(id) {
 	
-		try {
-			contact.remove();
-			resolve("Contact removed successfully.");
-		} catch (e) {
-			reject("Cannot remove contact: "+ e.message);
-		}
-	});
+	var contact = ds.Contact.find("ID = " + id);
+	
+	var result = {
+		result: false,
+		message: "ERROR : Unknown"
+	};
+	
+	try {
+		contact.remove();
+		result.result = true;
+		result.message = "Contact supprimé";
+	} catch (e) {
+		result.result = false;
+		result.message = "ERROR : Contact pas supprimé";
+	} finally {
+		return result;
+	}
 };
 model.ServiceGestionContact.methods.supprimerContact.scope = "public";
 
 
-model.ServiceGestionContact.methods.modifierContact = function(id, nom, prenom, callback) {
+model.ServiceGestionContact.methods.modifierContact = function(id, nom, prenom) {
 	
-	return new Promise(function (resolve, reject) {
-		var contact = ds.Contact.find("ID = " + id);
-		contact.nom = nom;
-		contact.prenom = prenom;
-		
-		try {
-			contact.save();
-			resolve("Contact modified successfully.");
-		} catch (e) {
-			reject("Cannot modify contact: "+ e.message);
-		}
-	});
+	var contact = ds.Contact.find("ID = " + id);
+	contact.nom = nom;
+	contact.prenom = prenom;
+	
+	var result = {
+		result: false,
+		message: "ERROR : Unknown"
+	};
+	
+	try {
+		contact.save();
+		result.result = true;
+		result.message = "Contact modifié";
+	} catch (e) {
+		result.result = false;
+		result.message = "ERROR : Contact pas modifié";
+	} finally {
+		return result;
+	}
 	
 };
 model.ServiceGestionContact.methods.modifierContact.scope = "public";
