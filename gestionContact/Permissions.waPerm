@@ -5,4 +5,5 @@
 	<allow action="promote" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.ServiceGestionContact.creerContact" temporaryForcePermissions="false" type="method"/>
 	<allow action="promote" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.ServiceGestionContact.modifierContact" temporaryForcePermissions="false" type="method"/>
 	<allow action="promote" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.ServiceGestionContact.supprimerContact" temporaryForcePermissions="false" type="method"/>
+	<allow action="read" groupName="BusinessAnalyst" groupID="A26A8ECFDD434EC4BBAE579A846B0D15" resource="Model.Contact.nom" temporaryForcePermissions="false" type="attribute"/>
 </permissions>

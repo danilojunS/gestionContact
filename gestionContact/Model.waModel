@@ -30,15 +30,25 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 334,
-						"Y": 294
+						"X": 99,
+						"Y": 280
+					}
+				}
+			},
+			"ServiceAuthentication": {
+				"panelColor": "#D8D8D8",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 336,
+						"Y": 282
 					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 105,
+			"workspaceLeft": 0,
 			"workspaceTop": 0,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
@@ -46,6 +56,9 @@
 				},
 				"User": {
 					"method": "User/User-methods.js"
+				},
+				"ServiceAuthentication": {
+					"method": "ServiceAuthentication/ServiceAuthentication-methods.js"
 				}
 			}
 		}
@@ -77,6 +90,46 @@
 					"kind": "storage",
 					"scope": "public",
 					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "ServiceAuthentication",
+			"className": "ServiceAuthentication",
+			"collectionName": "ServiceAuthenticationCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				}
+			],
+			"methods": [
+				{
+					"name": "getCurrentUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceAuthentication.methods.getCurrentUser",
+					"userDefined": true
+				},
+				{
+					"name": "login",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceAuthentication.methods.login",
+					"userDefined": true
+				},
+				{
+					"name": "logout",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceAuthentication.methods.logout",
+					"userDefined": true
 				}
 			]
 		},
@@ -161,13 +214,13 @@
 					"type": "string"
 				},
 				{
-					"name": "accessLevel",
+					"name": "roles",
 					"kind": "storage",
+					"matchColumn": "accessLevel",
 					"scope": "public",
-					"type": "long"
+					"type": "string"
 				}
 			]
 		}
-	],
-	"type": []
+	]
 }

@@ -11,7 +11,7 @@ angular.module('gestionContactApp')
   .controller('MyprofileCtrl', function ($scope, sessionService) {
     $scope.user = {
       name: null,
-      role: null
+      roles: null
     };
 
     $scope.$watch(function () {
@@ -21,9 +21,9 @@ angular.module('gestionContactApp')
     });
 
     $scope.$watch(function () {
-        return sessionService.getUserRole();
-      }, function(role) {
-        $scope.user.role = role;
+        return sessionService.getUserRoles();
+      }, function(roles) {
+        $scope.user.roles = roles;
     });
 
   });

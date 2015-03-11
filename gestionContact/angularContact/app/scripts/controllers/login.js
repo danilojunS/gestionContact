@@ -8,7 +8,7 @@
  * Controller of the gestionContactApp
  */
 angular.module('gestionContactApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, AUTH_EVENTS, authenticationService, $wakanda) {
+  .controller('LoginCtrl', function ($scope, $rootScope, AUTH_EVENTS, authenticationService) {
 
     $scope.credentials = {
       email: '',
@@ -16,6 +16,7 @@ angular.module('gestionContactApp')
     };
 
     $scope.login = function (credentials) {
+
       authenticationService.login(credentials).then(function (loginResult) {
         if (loginResult) {
 
@@ -35,18 +36,22 @@ angular.module('gestionContactApp')
 
     };
 
-    $scope.logout = function () {
-      authenticationService.logout().then(function () {
-        console.log('logout success');
-      }, function () {
-        console.log('logout error');
-      });
-    }; 
+    // $scope.logout = function () {
+    //   authenticationService.logout().then(function () {
+    //     console.log('logout success');
+    //   }, function () {
+    //     console.log('logout error');
+    //   });
+    // }; 
 
-    $scope.getCurrentUser = function () {
-      $wakanda.$currentUser().then(function(user) {
-        console.log(user);
-      });
-    }; 
+    // $scope.getCurrentUser = function () {
+    //   // $wakanda.$currentUser().then(function(user) {
+    //   //   console.log(user);
+    //   // });
+
+    //   $wakanda.$ds.ServiceAuthentication.getCurrentUser().then(function (result) {
+    //     console.log(result.result);
+    //   });
+    // }; 
 
   });

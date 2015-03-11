@@ -8,6 +8,6 @@
  * Controller of the gestionContactApp
  */
 angular.module('gestionContactApp')
-  .controller('AboutCtrl', function () {
-    
+  .controller('AboutCtrl', function ($scope, USER_ROLES) {
+    $scope.userRoles = USER_ROLES;
   });

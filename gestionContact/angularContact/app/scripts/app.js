@@ -29,9 +29,9 @@ angular
     notAuthorized: 'auth-not-authorized'
   })
   .constant('USER_ROLES', {
-    admin: 'user-admin',
-    businessAnalytics: 'user-business-analytics',
-    dataSteward: 'user-data-steward'
+    admin: 'Admin',
+    businessAnalyst: 'BusinessAnalyst',
+    dataSteward: 'DataSteward'
   })
   .config(function ($routeProvider, USER_ROLES) {
 
@@ -68,7 +68,7 @@ angular
       .when('/businessAnalyticsSpace', {
         templateUrl: 'views/businessanalyticsspace.html',
         controller: 'BusinessAnalyticsSpaceCtrl',
-        authorizedRoles: [USER_ROLES.businessAnalytics]
+        authorizedRoles: [USER_ROLES.businessAnalyst]
       })
       .when('/dataStewardSpace', {
         templateUrl: 'views/datastewardspace.html',
@@ -78,7 +78,7 @@ angular
       .when('/commonSpace', {
         templateUrl: 'views/commonspace.html',
         controller: 'CommonSpaceCtrl',
-        authorizedRoles: [USER_ROLES.businessAnalytics, USER_ROLES.dataSteward]
+        authorizedRoles: [USER_ROLES.businessAnalyst, USER_ROLES.dataSteward]
       })
       .when('/myProfile', {
         templateUrl: 'views/myprofile.html',
@@ -94,9 +94,7 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function ($route, $rootScope, $location, AUTH_EVENTS, authenticationService, USER_ROLES) {
-
-    $rootScope.userRoles = USER_ROLES;
+  .run(function ($route, $rootScope, $location, AUTH_EVENTS, authenticationService) {
 
     var pathAfterLogin = '/';  // path to where redirect the user after the login
 
@@ -116,7 +114,7 @@ angular
             console.log('user is not logged in');
           }
         } else if (!authenticationService.isAuthorized(authorizedRoles)) {
-          
+
           event.preventDefault();
 
           if (authenticationService.isAuthenticated()) {

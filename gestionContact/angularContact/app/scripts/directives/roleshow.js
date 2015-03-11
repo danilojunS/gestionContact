@@ -17,7 +17,7 @@ angular.module('gestionContactApp')
         var roles = attrs.roleShow.replace(/\s+/g, '').split(','); // remove spaces of the string and transform it into an array
         // console.log(roles);
         scope.$watch(function () {
-            return sessionService.getUserRole();
+            return sessionService.getUserRoles();
           }, function() {
             updateDirective();
         });

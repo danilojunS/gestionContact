@@ -14,107 +14,47 @@ angular.module('gestionContactApp')
 
     authService.login = function (credentials) {
 
-      return $wakanda.$loginByPassword(credentials.email, credentials.password).then(function (loginResult) {
-        if (loginResult.result === true) {
-          
+      return $wakanda.$ds.ServiceAuthentication.login(credentials.email, credentials.password).then(function (response) {
+        if (response.result.result === true) {
           console.log('Wakanda: login success');
+            
+          sessionService.create('', response.result.user.id, response.result.user.fullName, response.result.user.roles);
           
-          // sessionService.create(res.data.id, res.data.user.id, res.data.user.role);
-          // return res.data.user;
           return true;
+         
 
         } else {
+
           console.log('Wakanda: login failed');
           return false;
+
         }
       });
 
-      // return $q(function(resolve, reject) {
-      //     setTimeout(function() {
-      //       var res;
+      // return $wakanda.$loginByPassword(credentials.email, credentials.password).then(function (loginResult) {
+      //   if (loginResult.result === true) {
+          
+      //     console.log('Wakanda: login success');
+          
+      //     // sessionService.create(res.data.id, res.data.user.id, res.data.user.role);
+      //     // return res.data.user;
+      //     return true;
 
-      //       if (credentials.email === 'ba' && credentials.password === 'a') {
-
-      //         res = {
-      //           data : {
-      //             id: 'session-ba',
-      //             user: {
-      //               id: 'business-analytics',
-      //               name: 'Business Analytics',
-      //               role: 'user-business-analytics'
-      //             }
-      //           }
-      //         };
-
-      //         resolve(res);
-
-      //       } else if (credentials.email === 'ds' && credentials.password === 'a') {
-
-      //         res = {
-      //           data : {
-      //             id: 'session-ds',
-      //             user: {
-      //               id: 'data-steward',
-      //               name: 'Data Steward',
-      //               role: 'user-data-steward'
-      //             }
-      //           }
-      //         };
-
-      //         resolve(res);
-
-      //       } else if (credentials.email === 'nr' && credentials.password === 'a') {
-
-      //         res = {
-      //           data : {
-      //             id: 'session-nr',
-      //             user: {
-      //               id: 'no-role',
-      //               name: 'No Role',
-      //               role: null
-      //             }
-      //           }
-      //         };
-
-      //         resolve(res);
-
-      //       } else if (credentials.email === 'ad' && credentials.password === 'a') {
-
-      //         res = {
-      //           data : {
-      //             id: 'session-ad',
-      //             user: {
-      //               id: 'admin',
-      //               name: 'Admin',
-      //               role: 'user-admin'
-      //             }
-      //           }
-      //         };
-
-      //         resolve(res);
-
-      //       } else {
-      //         reject('It broke');
-      //       }
-      //     }, 1000);
-      //   }).then(function (res) {
-      //     sessionService.create(res.data.id, res.data.user.id, res.data.user.name, res.data.user.role);
-
-      //     return res.data.user;
-      //   });
+      //   } else {
+      //     console.log('Wakanda: login failed');
+      //     return false;
+      //   }
+      // });
     };
 
     authService.logout = function () {
       
-      return $wakanda.$logout().then(function() {
+      return $wakanda.$ds.ServiceAuthentication.logout().then(function (result) {
+        console.log(result.result);
         sessionService.destroy();
       });
 
-      // return $q(function(resolve) {
-      //   setTimeout(function() {
-      //     resolve();
-      //   }, 1000);
-      // }).then(function () {
+      // return $wakanda.$logout().then(function() {
       //   sessionService.destroy();
       // });
 
@@ -125,12 +65,25 @@ angular.module('gestionContactApp')
     };
 
     authService.isAuthorized = function (authorizedRoles) {
-      // only verify if user has rights to see the page if the page has any restriction
+
+      if (!authService.isAuthenticated ) {
+        return false;
+      }
+
       if (!angular.isArray(authorizedRoles)) {
         authorizedRoles = [authorizedRoles];
       }
-      return (authService.isAuthenticated() &&
-        authorizedRoles.indexOf(sessionService.getUserRole()) !== -1);
+      
+      var userRoles = sessionService.getUserRoles();
+
+      for (var i = 0; i < userRoles.length; i++) {
+        if (authorizedRoles.indexOf(userRoles[i]) !== -1) {
+          return true;
+        }
+      }
+
+      return false;
+      
     };
 
     return authService;

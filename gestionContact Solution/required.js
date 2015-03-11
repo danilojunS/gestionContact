@@ -44,28 +44,17 @@ function myLogin2(userName, password)
 	var theUser = directory.internalStore.User({name: userName});
 	if (theUser != null) //user exists  in the directory
 		return false; // allow directory authentication
-	else
-	{
+	else {
 		var result = {error: 1024, errorMessage: 'InvalidLogin'};
 		var contactDS = solution.getApplicationByName("gestionContact").ds;
 		var theUser = contactDS.User({login:userName});
-		if(theUser != null)
-		{
-			if(theUser.password === password /*directory.computeHA1(userName,password)*/)
-			{
-				var theGroups = [];
-				var putIntoStorage = {myId: theUser.ID};
-				switch (theUser.accessLevel){
-					case 1:
-						theGroups = ['Admin'];
-						break;
-					case 2:
-						theGroups = ['DataSteward'];
-						break;
-					case 3:
-						theGroups = ['BusinessAalyst'];
-						break;
-				}
+		if(theUser != null) {
+			if(theUser.password === password /*directory.computeHA1(userName,password)*/) {
+				
+				var theGroups = theUser.roles.split(",");
+				var putIntoStorage = {
+					roles: theGroups
+				};
 				
 				result = {
 					ID: theUser.ID,
@@ -76,7 +65,7 @@ function myLogin2(userName, password)
 				};
 			}
 		}
+		return result;
 	}
-	return result;
 }
 					
