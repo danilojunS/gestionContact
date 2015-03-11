@@ -8,7 +8,7 @@
  * Service in the gestionContactApp.
  */
 angular.module('gestionContactApp')
-  .service('authenticationService', function ($http, $q, sessionService, $wakanda) {
+  .service('authenticationService', function ($rootScope, $http, $q, sessionService, $wakanda, AUTH_EVENTS) {
 
     var authService = {};
 
@@ -47,10 +47,23 @@ angular.module('gestionContactApp')
       // });
     };
 
+    authService.verifyCookies = function () {
+      return $wakanda.init().then(function () {
+        $wakanda.$ds.ServiceAuthentication.getCurrentUser().then(function (response) {
+          if (response.result.result !== false) {
+            sessionService.create('', response.result.id, response.result.fullName, response.result.roles);
+            $rootScope.$broadcast(AUTH_EVENTS.hasCookie); 
+          }
+        });
+      });
+    };
+
     authService.logout = function () {
       
-      return $wakanda.$ds.ServiceAuthentication.logout().then(function (result) {
-        console.log(result.result);
+      return $wakanda.$ds.ServiceAuthentication.logout().then(function () {
+
+        console.log('Wakanda: logout success');
+        
         sessionService.destroy();
       });
 
@@ -85,6 +98,8 @@ angular.module('gestionContactApp')
       return false;
       
     };
+
+    // authService.verifyCookies();
 
     return authService;
   });

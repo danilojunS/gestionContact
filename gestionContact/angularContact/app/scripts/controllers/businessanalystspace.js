@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name gestionContactApp.controller:BusinessAnalyticsSpaceCtrl
+ * @name gestionContactApp.controller:BusinessAnalystSpaceCtrl
  * @description
- * # BusinessAnalyticsSpaceCtrl
+ * # BusinessAnalystSpaceCtrl
  * Controller of the gestionContactApp
  */
 angular.module('gestionContactApp')
-  .controller('BusinessAnalyticsSpaceCtrl', function ($scope) {
+  .controller('BusinessAnalystSpaceCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

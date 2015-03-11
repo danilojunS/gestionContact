@@ -26,7 +26,8 @@ angular
     logoutSuccess: 'auth-logout-success',
     sessionTimeout: 'auth-session-timeout',
     notAuthenticated: 'auth-not-authenticated',
-    notAuthorized: 'auth-not-authorized'
+    notAuthorized: 'auth-not-authorized',
+    hasCookie: 'auth-has-cookie'
   })
   .constant('USER_ROLES', {
     admin: 'Admin',
@@ -65,9 +66,9 @@ angular
         templateUrl: 'views/notauthorized.html',
         controller: 'NotauthorizedCtrl'
       })
-      .when('/businessAnalyticsSpace', {
-        templateUrl: 'views/businessanalyticsspace.html',
-        controller: 'BusinessAnalyticsSpaceCtrl',
+      .when('/businessAnalystSpace', {
+        templateUrl: 'views/businessanalystspace.html',
+        controller: 'BusinessAnalystSpaceCtrl',
         authorizedRoles: [USER_ROLES.businessAnalyst]
       })
       .when('/dataStewardSpace', {
@@ -148,5 +149,14 @@ angular
     $rootScope.$on(AUTH_EVENTS.logoutSuccess, function () {
       $location.path('/#');
     });
+
+    // has cookie with session, only refresh page
+    $rootScope.$on(AUTH_EVENTS.hasCookie, function () {
+      var path = pathAfterLogin;
+      pathAfterLogin = '/';
+      $location.path(path);
+    });
+
+    authenticationService.verifyCookies();
 
   });

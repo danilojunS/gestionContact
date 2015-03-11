@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: BusinessAnalyticsSpaceCtrl', function () {
+describe('Controller: BusinessAnalystSpaceCtrl', function () {
 
   // load the controller's module
   beforeEach(module('gestionContactApp'));
 
-  var BusinessAnalyticsSpaceCtrl,
+  var BusinessAnalystSpaceCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    BusinessAnalyticsSpaceCtrl = $controller('BusinessAnalyticsSpaceCtrl', {
+    BusinessAnalystSpaceCtrl = $controller('BusinessAnalystSpaceCtrl', {
       $scope: scope
     });
   }));
