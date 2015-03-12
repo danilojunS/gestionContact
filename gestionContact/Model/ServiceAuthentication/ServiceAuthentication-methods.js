@@ -1,12 +1,22 @@
 ﻿
 model.ServiceAuthentication.methods.login = function(username, password) {
+	// result in case of error
 	var res = {
 		result: false,
 		message: "ERROR : Login failed"
 	};
 	
+	// see if the user is already logged in
+	// if yes, logout from all sessions
+	// this is done to prevent multiple sessions of the same user
+	var sessions = getUserSessions(username);
+	sessions.forEach(function (session) {
+		session.forceExpire();
+	});
+	
+	// call standard login method from Wakanda
 	if (loginByPassword(username, password, 60*60)) {
-		
+		// the result has now the user information
 		var res = {
 			result: true,
 			message: "Login success",

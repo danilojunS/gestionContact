@@ -54,4 +54,10 @@ angular.module('gestionContactApp')
     //   });
     // }; 
 
+    // $scope.userBelongsTo = function () {
+    //   $wakanda.$currentUserBelongsTo('BusinessAnalyst').then(function (result) {
+    //     console.log(result);
+    //   });
+    // }; 
+
   });
