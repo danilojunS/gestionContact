@@ -9,10 +9,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-
 						"X": 476,
 						"Y": 247
-
 					}
 				}
 			},
@@ -21,10 +19,8 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-
-						"X": 484,
-						"Y": 547
-
+						"X": 496,
+						"Y": 550
 					}
 				}
 			},
@@ -34,10 +30,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-
 						"X": 71,
 						"Y": 175
-
 					}
 				}
 			},
@@ -46,10 +40,8 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-
-						"X": 154,
-						"Y": 539
-
+						"X": 817,
+						"Y": 544
 					}
 				}
 			},
@@ -58,8 +50,8 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 477,
-						"Y": 416
+						"X": 126,
+						"Y": 549
 					}
 				}
 			}
@@ -67,7 +59,7 @@
 		"model": {
 			"scriptMode": "manual",
 			"workspaceLeft": 0,
-			"workspaceTop": 0,
+			"workspaceTop": 82,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
 					"method": "ServiceGestionContact/ServiceGestionContact-methods.js"
@@ -78,13 +70,11 @@
 				"ServiceAuthentication": {
 					"method": "ServiceAuthentication/ServiceAuthentication-methods.js"
 				},
-
 				"Contact": {
 					"events": "Contact/Contact-events.js"
 				},
 				"ServiceGestionUsers": {
 					"method": "ServiceGestionUsers/ServiceGestionUsers-methods.js"
-
 				}
 			}
 		}
@@ -127,6 +117,10 @@
 				}
 			],
 			"events": [
+				{
+					"kind": "restrict",
+					"from": "$mainModel.Contact.events.restrict"
+				},
 				{
 					"kind": "restrict",
 					"from": "$mainModel.Contact.events.restrict",
@@ -310,6 +304,5 @@
 				}
 			]
 		}
-	],
-	"type": []
+	]
 }

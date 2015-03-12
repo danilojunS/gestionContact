@@ -8,7 +8,7 @@
 
 //loginByPassword('Jane','a');
 
-getUserSessions();
+//getUserSessions();
 
 //loginByPassword("Jane","a");
 //ds.Contact.all();
@@ -68,4 +68,8 @@ getUserSessions();
 
 //ds.User(1);
 //ds.User.all();
+
+
+//currentSession();
+
 

@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><directory>
-	<group ID="01000000000000000000000000000000" name="Admin">	</group>
+﻿<?xml version="1.0" encoding="UTF-8"?><directory>
+	<group ID="01000000000000000000000000000000" name="Admin">
+		<include user="Admin" ID="6857D25C53E34630AB21CEED6AC52750"/>
+	</group>
 	<group ID="98E23732BF694374B52FB02AB04C364D" name="ServiceGestionContact">
 		<include user="ServiceGestionContact" ID="8A3156B5C7044B6D912BC79A761644FE"/>
 	</group>
-	<group ID="DD85E2A4C3294C6B90793AB4F7E19B15" name="DataSteward">
-		<include user="Jane" ID="567C9861EAE749FD85B637F033BA8EA3"/>
-	</group>
-	<group ID="A26A8ECFDD434EC4BBAE579A846B0D15" name="BusinessAnalyst">
-		<include user="John" ID="DE59084FA38D494EA234390FDFCAFFAA"/>
-		<include user="Jane" ID="567C9861EAE749FD85B637F033BA8EA3"/>
-	</group>
-	<user ID="DE59084FA38D494EA234390FDFCAFFAA" name="John" fullName="John Doe" password="ffb731271dc938e849789f38e3e0e1ef"/>
-	<user ID="567C9861EAE749FD85B637F033BA8EA3" name="Jane" fullName="Jane Doe" password="e3bf0f17650d1e3b1f26b05fc66fdebf"/>
+	<group ID="DD85E2A4C3294C6B90793AB4F7E19B15" name="DataSteward">	</group>
+	<group ID="A26A8ECFDD434EC4BBAE579A846B0D15" name="BusinessAnalyst">	</group>
 	<user ID="8A3156B5C7044B6D912BC79A761644FE" name="ServiceGestionContact" fullName="ServiceGestionContact" password="68ad1835e8506a233b6418e965fb918b"/>
+	<user ID="6857D25C53E34630AB21CEED6AC52750" name="Admin" fullName="Administrator" password="5af2f73d2694e61bc2a56c117df8c688"/>
 </directory>
