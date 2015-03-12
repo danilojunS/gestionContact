@@ -9,8 +9,8 @@
 
 //getUserSessions();
 
-//loginByPassword("Jane","a");
 
+//loginByPassword("Jane","a");
 //ds.Contact.all();
 
 //ds.ServiceGestionContact.creerContact("John", "Wick");
@@ -31,10 +31,17 @@ contact.save();*/
 //    item.forceExpire();
 //});
 
-getUserSessions();
-
+//var currentUserId = currentUser().ID;
+//if (currentUserId !== "00000000000000000000000000000000") {
+//	var sessions = getUserSessions(currentUser().ID);
+//	sessions.forEach(function (session) {
+//		session.forceExpire();
+//	});
+//}
 //loginByPassword('user1','a');
 //currentUser();
 //currentSession();
 //logout();
+
+getUserSessions();
 
