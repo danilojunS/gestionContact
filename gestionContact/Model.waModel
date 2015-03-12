@@ -9,8 +9,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 80,
-						"Y": 54
+						"X": 108,
+						"Y": 49
 					}
 				}
 			},
@@ -19,8 +19,8 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 311,
-						"Y": 54
+						"X": 466,
+						"Y": 21
 					}
 				}
 			},
@@ -30,8 +30,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 99,
-						"Y": 280
+						"X": 109,
+						"Y": 232
 					}
 				}
 			},
@@ -40,8 +40,18 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 369,
-						"Y": 290
+						"X": 473,
+						"Y": 220
+					}
+				}
+			},
+			"ServiceGestionUsers": {
+				"panelColor": "#BFBFBF",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 477,
+						"Y": 416
 					}
 				}
 			}
@@ -59,6 +69,9 @@
 				},
 				"ServiceAuthentication": {
 					"method": "ServiceAuthentication/ServiceAuthentication-methods.js"
+				},
+				"ServiceGestionUsers": {
+					"method": "ServiceGestionUsers/ServiceGestionUsers-methods.js"
 				}
 			}
 		}
@@ -110,13 +123,6 @@
 				}
 			],
 			"methods": [
-				{
-					"name": "createUser",
-					"applyTo": "dataClass",
-					"scope": "public",
-					"from": "$mainModel.ServiceAuthentication.methods.createUser",
-					"userDefined": true
-				},
 				{
 					"name": "getCurrentUser",
 					"applyTo": "dataClass",
@@ -181,6 +187,46 @@
 			]
 		},
 		{
+			"name": "ServiceGestionUsers",
+			"className": "ServiceGestionUsers",
+			"collectionName": "ServiceGestionUsersCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				}
+			],
+			"methods": [
+				{
+					"name": "createUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceGestionUsers.methods.createUser",
+					"userDefined": true
+				},
+				{
+					"name": "deleteUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceGestionUsers.methods.deleteUser",
+					"userDefined": true
+				},
+				{
+					"name": "modifyUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceGestionUsers.methods.modifyUser",
+					"userDefined": true
+				}
+			]
+		},
+		{
 			"name": "User",
 			"className": "User",
 			"collectionName": "UserCollection",
@@ -223,11 +269,11 @@
 				{
 					"name": "roles",
 					"kind": "storage",
-					"matchColumn": "accessLevel",
 					"scope": "public",
 					"type": "string"
 				}
 			]
 		}
-	]
+	],
+	"type": []
 }
