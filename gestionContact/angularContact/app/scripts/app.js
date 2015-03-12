@@ -91,6 +91,10 @@ angular
         authorizedRoles: [USER_ROLES.admin],
         resolve: routeResolver
       })
+      .when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

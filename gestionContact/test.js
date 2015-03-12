@@ -44,4 +44,23 @@ contact.save();*/
 //logout();
 
 getUserSessions();
+//currentSession().storage;
+//var session = currentSession();
+////session;
+//var userID = session.storage.userID;
+//var result = ds.Contact.query("user.ID = :1", userID);
+//var result = ds.Contact.all();
 
+//result;
+
+//loginByPassword('ba','a');
+//var user = currentUser();
+
+
+//user;
+
+//ds.ServiceGestionContact.creerContact('Wayne', 'Bruce');
+
+//ds.Contact(11).user;
+
+//ds.User(1);

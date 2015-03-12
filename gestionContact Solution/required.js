@@ -49,11 +49,12 @@ function myLogin2(userName, password)
 		var contactDS = solution.getApplicationByName("gestionContact").ds;
 		var theUser = contactDS.User({login:userName});
 		if(theUser != null) {
-			if(theUser.password === password /*directory.computeHA1(userName,password)*/) {
+			if(theUser.password === directory.computeHA1(userName,password)) {
 				
 				var theGroups = theUser.roles.split(",");
 				var putIntoStorage = {
-					roles: theGroups
+					roles: theGroups,
+					userID: theUser.ID
 				};
 				
 				result = {

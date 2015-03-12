@@ -4,6 +4,7 @@ model.ServiceGestionContact.methods.creerContact = function(nom, prenom) {
 	var contact = new ds.Contact();
 	contact.nom = nom;
 	contact.prenom = prenom;
+	contact.user = ds.User.find("ID = :1", currentSession().storage.userID);
 	
 	var result = {
 		result: false,

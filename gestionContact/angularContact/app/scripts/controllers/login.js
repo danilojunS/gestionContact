@@ -27,6 +27,8 @@ angular.module('gestionContactApp')
 
           console.log('login failed: invalid name or password');
           $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+
+          alert('Error: Invalid Name or Password!');
         
         }
       }, function () {
