@@ -1,1 +1,1 @@
-﻿directory.setLoginListener('myLogin2');
+﻿directory.setLoginListener('myLogin2','Admin');

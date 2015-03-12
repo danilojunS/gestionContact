@@ -5,10 +5,10 @@
 
 //logout()
 
+
 //loginByPassword('Jane','a');
 
-//getUserSessions();
-
+getUserSessions();
 
 //loginByPassword("Jane","a");
 //ds.Contact.all();
@@ -31,6 +31,8 @@ contact.save();*/
 //    item.forceExpire();
 //});
 
+//getUserSessions();
+
 //var currentUserId = currentUser().ID;
 //if (currentUserId !== "00000000000000000000000000000000") {
 //	var sessions = getUserSessions(currentUser().ID);
@@ -38,6 +40,7 @@ contact.save();*/
 //		session.forceExpire();
 //	});
 //}
+
 //loginByPassword('user1','a');
 //currentUser();
 //currentSession();
@@ -64,3 +67,5 @@ getUserSessions();
 //ds.Contact(11).user;
 
 //ds.User(1);
+//ds.User.all();
+

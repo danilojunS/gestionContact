@@ -9,8 +9,10 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
+
 						"X": 476,
 						"Y": 247
+
 					}
 				}
 			},
@@ -19,8 +21,10 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
+
 						"X": 484,
 						"Y": 547
+
 					}
 				}
 			},
@@ -30,8 +34,10 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
+
 						"X": 71,
 						"Y": 175
+
 					}
 				}
 			},
@@ -40,8 +46,20 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
+
 						"X": 154,
 						"Y": 539
+
+					}
+				}
+			},
+			"ServiceGestionUsers": {
+				"panelColor": "#BFBFBF",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 477,
+						"Y": 416
 					}
 				}
 			}
@@ -60,8 +78,13 @@
 				"ServiceAuthentication": {
 					"method": "ServiceAuthentication/ServiceAuthentication-methods.js"
 				},
+
 				"Contact": {
 					"events": "Contact/Contact-events.js"
+				},
+				"ServiceGestionUsers": {
+					"method": "ServiceGestionUsers/ServiceGestionUsers-methods.js"
+
 				}
 			}
 		}
@@ -192,6 +215,46 @@
 			]
 		},
 		{
+			"name": "ServiceGestionUsers",
+			"className": "ServiceGestionUsers",
+			"collectionName": "ServiceGestionUsersCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				}
+			],
+			"methods": [
+				{
+					"name": "createUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceGestionUsers.methods.createUser",
+					"userDefined": true
+				},
+				{
+					"name": "deleteUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceGestionUsers.methods.deleteUser",
+					"userDefined": true
+				},
+				{
+					"name": "modifyUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceGestionUsers.methods.modifyUser",
+					"userDefined": true
+				}
+			]
+		},
+		{
 			"name": "User",
 			"className": "User",
 			"collectionName": "UserCollection",
@@ -234,7 +297,6 @@
 				{
 					"name": "roles",
 					"kind": "storage",
-					"matchColumn": "accessLevel",
 					"scope": "public",
 					"type": "string"
 				},
