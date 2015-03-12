@@ -1,4 +1,4 @@
-﻿{
+{
 	"toJSON": true,
 	"extraProperties": {
 		"version": "2",
@@ -40,8 +40,8 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 336,
-						"Y": 282
+						"X": 369,
+						"Y": 290
 					}
 				}
 			}
@@ -110,6 +110,13 @@
 				}
 			],
 			"methods": [
+				{
+					"name": "createUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.ServiceAuthentication.methods.createUser",
+					"userDefined": true
+				},
 				{
 					"name": "getCurrentUser",
 					"applyTo": "dataClass",

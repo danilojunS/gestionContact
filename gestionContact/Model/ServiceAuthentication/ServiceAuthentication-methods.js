@@ -61,3 +61,34 @@ model.ServiceAuthentication.methods.logout = function() {
 	return logout();
 };
 model.ServiceAuthentication.methods.logout.scope = "public";
+
+
+model.ServiceAuthentication.methods.createUser = function(infos) {
+	
+	var user = new ds.User();
+	user.nom = infos.nom;
+	user.prenom = infos.prenom;
+	user.login = infos.login;
+	user.password = infos.password;
+	user.roles = infos.roles;
+
+	
+	var result = {
+		result: false,
+		message: "ERROR : Unknown"
+	};
+	
+	try {
+		user.save();
+		result.result = true;
+		result.message = "User créé";
+	} catch (e) {
+		result.result = false;
+		result.message = "ERROR : User pas créé";
+	} finally {
+		return result;
+	}
+};
+
+model.ServiceAuthentication.methods.createUser.scope = "public";
+

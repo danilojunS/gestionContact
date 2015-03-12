@@ -20,33 +20,39 @@ angular
     'wakanda'
   ])
   .constant('AUTH_EVENTS', {
-    loginSuccess: 'auth-login-success',
-    loginError: 'auth-login-error',                 // some error in login process
-    loginFailed: 'auth-login-failed',               // invalid name or password
-    logoutSuccess: 'auth-logout-success',
-    sessionTimeout: 'auth-session-timeout',
-    notAuthenticated: 'auth-not-authenticated',
-    notAuthorized: 'auth-not-authorized',
-    hasCookie: 'auth-has-cookie'
+    // Liste de constantes correspondant à des évennements liés à l'authentification
+    loginSuccess: 'auth-login-success',             // Réussite du login
+    loginError: 'auth-login-error',                 // Erreur pendant le process
+    loginFailed: 'auth-login-failed',               // Echec du login
+    logoutSuccess: 'auth-logout-success',           // Réussite du logout
+    sessionTimeout: 'auth-session-timeout',         // Timeout atteint
+    notAuthenticated: 'auth-not-authenticated',     // Utilisateur non authentifié
+    notAuthorized: 'auth-not-authorized',           // Utilisateur non habilité
+    hasCookie: 'auth-has-cookie'                    // Utilisateur détient lecookie d'authent
   })
   .constant('USER_ROLES', {
+    // Liste des roles proosibles pour un User
     admin: 'Admin',
     businessAnalyst: 'BusinessAnalyst',
     dataSteward: 'DataSteward'
   })
   .config(function ($routeProvider, USER_ROLES) {
 
+    // Initialisation du service Wakanda
     var routeResolver = {
       app: ['$wakanda', function($wakanda) {
           return $wakanda.init();
         }]
     };
 
+    // L'option authorizedRoles permet d'effectuer le contrôle de l'habilitation à la demande de chargement d'une page
+    // Si il n'est pas renseigné, l'accès est autorisé à tout le monde
+    // On peut y passer un tableau de roles 
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        authorizedRoles: '*'      // it means that the user must be logged to see this page (all roles can see this page)
+        authorizedRoles: '*'      
       })
       .when('/about', {
         templateUrl: 'views/about.html',

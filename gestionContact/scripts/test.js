@@ -3,13 +3,12 @@
 
 //currentUser()
 
-//logout()
+logout()
+
 
 //loginByPassword('Jane','a');
 
-//getUserSessions();
-
-//loginByPassword("Jane","a");
+getUserSessions();
 
 //ds.Contact.all();
 
@@ -31,10 +30,12 @@ contact.save();*/
 //    item.forceExpire();
 //});
 
-getUserSessions();
+//getUserSessions();
 
 //loginByPassword('user1','a');
 //currentUser();
 //currentSession();
 //logout();
+
+//ds.User.all();
 
