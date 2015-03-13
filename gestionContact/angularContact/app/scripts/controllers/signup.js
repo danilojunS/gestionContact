@@ -10,18 +10,25 @@
 angular.module('gestionContactApp')
   .controller('SignupCtrl', function ($scope, $wakanda) {
 
-    initUser();
-    $scope.passwordConfirm = '';
-    $scope.rolesString = '';
+    init();
 
     $scope.createUser = function () {
       if ($scope.user.password === $scope.passwordConfirm) {
         
         $scope.user.roles = $scope.rolesString.split(',');
 
-        $wakanda.$ds.ServiceGestionUsers.createUser($scope.user).then(function () {
-          initUser();
-          alert('User created!');
+        $wakanda.$ds.ServiceGestionUsers.createUser($scope.user).then(function (result) {
+          if (result.result.result) {
+            alert('User created!');
+            init();
+          } else {
+            if(result.result.loginTaken) {
+              alert('Login already taken!');
+            }
+            else {
+              alert('User not created!');
+            }
+          }
         });
         
       } else {
@@ -30,7 +37,7 @@ angular.module('gestionContactApp')
       // console.log($scope.user);
     };
 
-    function initUser() {
+    function init() {
       $scope.user = {
         nom: null,
         prenom: null,
@@ -38,5 +45,7 @@ angular.module('gestionContactApp')
         password: null,
         roles: []
       };
+      $scope.passwordConfirm = '';
+      $scope.rolesString = '';
     }
   });

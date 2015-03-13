@@ -5,4 +5,10 @@
 	<allow action="create" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.Contact" temporaryForcePermissions="false" type="dataClass"/>
 	<allow action="update" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.Contact" temporaryForcePermissions="false" type="dataClass"/>
 	<allow action="remove" groupName="ServiceGestionContact" groupID="98E23732BF694374B52FB02AB04C364D" resource="Model.Contact" temporaryForcePermissions="false" type="dataClass"/>
+	<allow action="create" groupName="ServiceGestionUsers" groupID="57357DE5FB764CDA84F26503EB023BD0" resource="Model.User" temporaryForcePermissions="false" type="dataClass"/>
+	<allow action="update" groupName="ServiceGestionUsers" groupID="57357DE5FB764CDA84F26503EB023BD0" resource="Model.User" temporaryForcePermissions="false" type="dataClass"/>
+	<allow action="remove" groupName="ServiceGestionUsers" groupID="57357DE5FB764CDA84F26503EB023BD0" resource="Model.User" temporaryForcePermissions="false" type="dataClass"/>
+	<allow action="promote" groupName="ServiceGestionUsers" groupID="57357DE5FB764CDA84F26503EB023BD0" resource="Model.ServiceGestionUsers.createUser" temporaryForcePermissions="false" type="method"/>
+	<allow action="promote" groupName="ServiceGestionUsers" groupID="57357DE5FB764CDA84F26503EB023BD0" resource="Model.ServiceGestionUsers.modifyUser" temporaryForcePermissions="false" type="method"/>
+	<allow action="promote" groupName="ServiceGestionUsers" groupID="57357DE5FB764CDA84F26503EB023BD0" resource="Model.ServiceGestionUsers.deleteUser" temporaryForcePermissions="false" type="method"/>
 </permissions>

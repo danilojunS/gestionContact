@@ -9,7 +9,7 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 872,
+						"X": 889,
 						"Y": 189
 					}
 				}
@@ -30,8 +30,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 388,
-						"Y": 162
+						"X": 415,
+						"Y": 140
 					}
 				}
 			},
@@ -40,8 +40,8 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 898,
-						"Y": 526
+						"X": 766,
+						"Y": 472
 					}
 				}
 			},
@@ -50,16 +50,16 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 449,
-						"Y": 510
+						"X": 440,
+						"Y": 469
 					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 117,
-			"workspaceTop": 82,
+			"workspaceLeft": 119,
+			"workspaceTop": 0,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
 					"method": "ServiceGestionContact/ServiceGestionContact-methods.js"
@@ -94,6 +94,7 @@
 					"unique": true,
 					"autosequence": true,
 					"type": "long",
+					"indexKind": "btree",
 					"primKey": true
 				},
 				{
@@ -142,6 +143,7 @@
 					"unique": true,
 					"autosequence": true,
 					"type": "long",
+					"indexKind": "btree",
 					"primKey": true
 				}
 			],
@@ -182,6 +184,7 @@
 					"unique": true,
 					"autosequence": true,
 					"type": "long",
+					"indexKind": "btree",
 					"primKey": true
 				}
 			],
@@ -222,6 +225,7 @@
 					"unique": true,
 					"autosequence": true,
 					"type": "long",
+					"indexKind": "btree",
 					"primKey": true
 				}
 			],
@@ -263,6 +267,7 @@
 					"unique": true,
 					"autosequence": true,
 					"type": "long",
+					"indexKind": "btree",
 					"primKey": true
 				},
 				{
@@ -281,7 +286,9 @@
 					"name": "login",
 					"kind": "storage",
 					"scope": "public",
-					"type": "string"
+					"unique": true,
+					"type": "string",
+					"indexKind": "btree"
 				},
 				{
 					"name": "password",
@@ -305,6 +312,5 @@
 				}
 			]
 		}
-	],
-	"type": []
+	]
 }

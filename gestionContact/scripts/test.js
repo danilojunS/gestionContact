@@ -8,9 +8,10 @@
 
 //loginByPassword('Jane','a');
 
-getUserSessions();
+//getUserSessions();
 
-//loginByPassword("Jane","a");
+//loginByPassword("john","a");
+
 //ds.Contact.all();
 
 //ds.ServiceGestionContact.creerContact("John", "Wick");
@@ -20,10 +21,12 @@ getUserSessions();
 
 //var contact = ds.Contact.find("ID = " + 8);
 //contact.remove();
- /*
+
+/*
 var contact = new ds.Contact();
 contact.nom = "Mary";
 contact.prenom = "Mary";
+contact.user = ds.User.find("ID = :1", currentSession().storage.userID);
 contact.save();*/
 
 //var arrStop = getUserSessions();
@@ -72,7 +75,6 @@ contact.save();*/
 
 //currentSession();
 
-<<<<<<< HEAD
 /*
 var newUser = {};
 newUser.nom = 'doe';
@@ -87,8 +89,10 @@ ds.ServiceGestionUsers.createUser(newUser);
 //var contact = new ds.Contact();
 //	contact.nom = 'vbuooionb';
 //	contact.prenom = 'test';
-=======
+
 //directory.computeHA1('bads','a');
->>>>>>> d4904024579d96f8049c14513e70b7bfa5d55a40
+
 
 //contact.save();
+
+ds.User.find("login = " + 'john');

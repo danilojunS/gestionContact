@@ -1,22 +1,22 @@
 ﻿
 
 
-
 model.ServiceGestionUsers.methods.createUser = function(infos) {
 	
 	var user = new ds.User();
 
-	user.nom = infos.nom;
-	user.prenom = infos.prenom;
-	user.login = infos.login;
-	user.password = directory.computeHA1(user.login, infos.password);
-	user.roles = infos.roles.join(",");
-
+	
 	
 	var result = {
 		result: false,
 		message: "ERROR : Unknown"
 	};
+	
+	if(ds.User.find("login = " + user.login) !== null) {
+		result.message = "ERROR : Login already taken";
+		result.loginTaken = true;
+		return result;
+	}
 	
 	try {
 		user.save();
@@ -25,6 +25,7 @@ model.ServiceGestionUsers.methods.createUser = function(infos) {
 	} catch (e) {
 		result.result = false;
 		result.message = "ERROR : User not created";
+		result.e = e;
 	} finally {
 		return result;
 	}
@@ -35,7 +36,7 @@ model.ServiceGestionUsers.methods.createUser.scope = "public";
 
 model.ServiceGestionUsers.methods.deleteUser = function(id) {
 
-	var user = ds.Contact.find("ID = " + id);
+	var user = ds.User.find("ID = " + id);
 		
 		var result = {
 			result: false,
@@ -59,11 +60,14 @@ model.ServiceGestionUsers.methods.deleteUser.scope = "public";
 
 model.ServiceGestionUsers.methods.modifyUser = function(infos) {
 	
-	var  user = ds.Contact.find("ID = " + infos.id);
+	var  user = ds.User.find("ID = " + infos.id);
 
-	for(var key in infos) {
-		user[key] = infos[key];
-	}
+	user.nom = infos.nom;
+	user.prenom = infos.prenom;
+	user.login = infos.login;
+	user.password = directory.computeHA1(user.login, infos.password);
+	user.roles = infos.roles.join(",");
+
 	
 	var result = {
 		result: false,
