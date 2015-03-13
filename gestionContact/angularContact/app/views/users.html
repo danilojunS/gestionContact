@@ -29,17 +29,17 @@
     <tr>
       <th>Nom</th>
       <th>Prénom</th>
-      <!-- <th>Actions</th> -->
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="user in users">
       <td>{{user.nom}}</td>
       <td>{{user.prenom}}</td>
-      <!-- <td>
-        <span class="button glyphicon glyphicon-pencil" title="Éditer" ng-click="editUser(user); window.scrollTo(0, 0)"></span>
-        <span class="button glyphicon glyphicon-remove" title="Supprimer" ng-click="removeUser(user)"></span>
-      </td> -->
+      <td>
+        <!-- <span class="button glyphicon glyphicon-pencil" title="Éditer" ng-click="editUser(user); window.scrollTo(0, 0)"></span> -->
+        <span class="button glyphicon glyphicon-remove" style="cursor: pointer;" title="Supprimer" ng-click="deleteUser(user)"></span>
+      </td>
     </tr>
   </tbody>
 </table>

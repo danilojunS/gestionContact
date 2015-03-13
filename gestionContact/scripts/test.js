@@ -72,6 +72,7 @@ contact.save();*/
 
 //currentSession();
 
+<<<<<<< HEAD
 /*
 var newUser = {};
 newUser.nom = 'doe';
@@ -86,5 +87,8 @@ ds.ServiceGestionUsers.createUser(newUser);
 //var contact = new ds.Contact();
 //	contact.nom = 'vbuooionb';
 //	contact.prenom = 'test';
+=======
+//directory.computeHA1('bads','a');
+>>>>>>> d4904024579d96f8049c14513e70b7bfa5d55a40
 
 //contact.save();

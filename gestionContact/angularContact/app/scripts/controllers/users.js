@@ -12,4 +12,14 @@ angular.module('gestionContactApp')
     
     $scope.users = $wakanda.$ds.User.$find({});
 
+
+    $scope.deleteUser = function (user) {
+      console.log('Suppression d utilisateur.');
+      $wakanda.$ds.ServiceGestionUsers.deleteUser(user.ID).then(function (result) {
+        console.log(result);
+        $scope.users = $wakanda.$ds.User.$find({});
+      });
+        
+    };
+
   });
