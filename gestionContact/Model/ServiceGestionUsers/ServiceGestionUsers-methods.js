@@ -1,4 +1,4 @@
-
+﻿
 
 
 
@@ -6,14 +6,11 @@ model.ServiceGestionUsers.methods.createUser = function(infos) {
 	
 	var user = new ds.User();
 
-	for(var key in infos) {
-		user[key] = infos[key];
-	}
-	/*user.nom = infos.nom;
+	user.nom = infos.nom;
 	user.prenom = infos.prenom;
 	user.login = infos.login;
-	user.password = infos.password;
-	user.roles = infos.roles.join(",");*/
+	user.password = directory.computeHA1(user.login, infos.password);
+	user.roles = infos.roles.join(",");
 
 	
 	var result = {

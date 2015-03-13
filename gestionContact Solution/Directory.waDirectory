@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?><directory>
-	<group ID="01000000000000000000000000000000" name="Admin">
-		<include user="Admin" ID="6857D25C53E34630AB21CEED6AC52750"/>
-	</group>
+	<group ID="01000000000000000000000000000000" name="Admin">	</group>
 	<group ID="98E23732BF694374B52FB02AB04C364D" name="ServiceGestionContact">
-		<include user="ServiceGestionContact" ID="8A3156B5C7044B6D912BC79A761644FE"/>
+		<include user="ServiceGestionContact" ID="3F07E578034D463B9A4AE1DD5724E66A"/>
 	</group>
 	<group ID="DD85E2A4C3294C6B90793AB4F7E19B15" name="DataSteward">	</group>
 	<group ID="A26A8ECFDD434EC4BBAE579A846B0D15" name="BusinessAnalyst">	</group>
-	<user ID="8A3156B5C7044B6D912BC79A761644FE" name="ServiceGestionContact" fullName="ServiceGestionContact" password="68ad1835e8506a233b6418e965fb918b"/>
-	<user ID="6857D25C53E34630AB21CEED6AC52750" name="Admin" fullName="Administrator" password="5af2f73d2694e61bc2a56c117df8c688"/>
+	<group ID="57357DE5FB764CDA84F26503EB023BD0" name="ServiceGestionUsers"/>
+	<user ID="3F07E578034D463B9A4AE1DD5724E66A" name="ServiceGestionContact" fullName="ServiceGestionContact" password="68ad1835e8506a233b6418e965fb918b"/>
 </directory>

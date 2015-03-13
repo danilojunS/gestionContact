@@ -9,8 +9,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 476,
-						"Y": 247
+						"X": 872,
+						"Y": 189
 					}
 				}
 			},
@@ -19,8 +19,8 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 496,
-						"Y": 550
+						"X": 1220,
+						"Y": 172
 					}
 				}
 			},
@@ -30,8 +30,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 71,
-						"Y": 175
+						"X": 388,
+						"Y": 162
 					}
 				}
 			},
@@ -40,8 +40,8 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 817,
-						"Y": 544
+						"X": 898,
+						"Y": 526
 					}
 				}
 			},
@@ -50,22 +50,23 @@
 				"panel": {
 					"isOpen": "true",
 					"position": {
-						"X": 126,
-						"Y": 549
+						"X": 449,
+						"Y": 510
 					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 0,
+			"workspaceLeft": 117,
 			"workspaceTop": 82,
 			"lastScriptLocation": {
 				"ServiceGestionContact": {
 					"method": "ServiceGestionContact/ServiceGestionContact-methods.js"
 				},
 				"User": {
-					"method": "User/User-methods.js"
+					"method": "User/User-methods.js",
+					"events": "User/User-events.js"
 				},
 				"ServiceAuthentication": {
 					"method": "ServiceAuthentication/ServiceAuthentication-methods.js"
@@ -304,5 +305,6 @@
 				}
 			]
 		}
-	]
+	],
+	"type": []
 }

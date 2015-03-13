@@ -8,7 +8,7 @@
 
 //loginByPassword('Jane','a');
 
-//getUserSessions();
+getUserSessions();
 
 //loginByPassword("Jane","a");
 //ds.Contact.all();
@@ -46,7 +46,7 @@ contact.save();*/
 //currentSession();
 //logout();
 
-getUserSessions();
+//getUserSessions();
 //currentSession().storage;
 //var session = currentSession();
 ////session;
@@ -72,4 +72,19 @@ getUserSessions();
 
 //currentSession();
 
+/*
+var newUser = {};
+newUser.nom = 'doe';
+newUser.prenom = 'jane';
+newUser.login = 'jane';
+newUser.password = 'a';
+newUser.roles = ['DataSteward'];
+ds.ServiceGestionUsers.createUser(newUser);
+*/
 
+
+//var contact = new ds.Contact();
+//	contact.nom = 'vbuooionb';
+//	contact.prenom = 'test';
+
+//contact.save();
