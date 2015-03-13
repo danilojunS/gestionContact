@@ -72,4 +72,5 @@ getUserSessions();
 
 //currentSession();
 
+//directory.computeHA1('bads','a');
 
