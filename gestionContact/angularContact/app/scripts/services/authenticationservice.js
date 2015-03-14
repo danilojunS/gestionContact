@@ -78,13 +78,16 @@ angular.module('gestionContactApp')
     };
 
     authService.isAuthorized = function (authorizedRoles) {
-
-      if (!authService.isAuthenticated ) {
+      if (!authService.isAuthenticated()) {
         return false;
       }
 
       if (!angular.isArray(authorizedRoles)) {
         authorizedRoles = [authorizedRoles];
+      }
+
+      if (authorizedRoles.indexOf('*') !== -1) {
+        return authService.isAuthenticated();
       }
       
       var userRoles = sessionService.getUserRoles();

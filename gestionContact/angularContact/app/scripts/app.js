@@ -61,7 +61,8 @@ angular
       .when('/contacts', {
         templateUrl: 'views/contacts.html',
         controller: 'ContactsCtrl',
-        resolve: routeResolver
+        resolve: routeResolver,
+        authorizedRoles: '*'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
@@ -115,17 +116,7 @@ angular
       var authorizedRoles = next.authorizedRoles;
 
       if (authorizedRoles) {
-        if (authorizedRoles === '*') {
-          if (!authenticationService.isAuthenticated()) {
-            event.preventDefault();
-
-            $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-            pathAfterLogin = next.originalPath;                     // save path that the user wants to access after the login
-            $location.path('/login');                               // redirect user to login page
-
-            console.log('user is not logged in');
-          }
-        } else if (!authenticationService.isAuthorized(authorizedRoles)) {
+        if (!authenticationService.isAuthorized(authorizedRoles)) {
 
           event.preventDefault();
 
