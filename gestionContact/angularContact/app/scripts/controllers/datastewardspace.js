@@ -8,10 +8,5 @@
  * Controller of the gestionContactApp
  */
 angular.module('gestionContactApp')
-  .controller('DataStewardSpaceCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('DataStewardSpaceCtrl', function () {
   });

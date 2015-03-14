@@ -109,31 +109,38 @@ angular
   })
   .run(function ($route, $rootScope, $location, AUTH_EVENTS, authenticationService, USER_ROLES, $window) {
 
+    // USER_ROLES peut être accédé partout dans l'application
     $rootScope.USER_ROLES = USER_ROLES;
 
-    var pathAfterLogin = '/';  // path to where redirect the user after the login
+    // variable pour garder le chemin vers lequel l'utilisateur sera dirigé après le login
+    // par défaut, diriger l'utilisateur à la page principale
+    var pathAfterLogin = '/'; 
 
+    // observer les transitions des routes
     $rootScope.$on('$routeChangeStart', function (event, next) {
       
+      // objet next contient les roles autorisés, spécifiés dans les routes
       var authorizedRoles = next.authorizedRoles;
 
       if (authorizedRoles) {
         if (!authenticationService.isAuthorized(authorizedRoles)) {
-
+          // si l'utilisateur n'est pas autorisé
+          // découvrir la raison
           event.preventDefault();
 
           if (authenticationService.isAuthenticated()) {
-            // user is not allowed
+            // l'utilisateur est identifié, mais n'a pas droit d'accéder à la vue
             $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-            $location.path('/notAuthorized');                       // redirect user to error page
+            $location.path('/notAuthorized');                       // aller à la page d'erreur
 
             console.log('user is not allowed');
 
           } else {
-            // user is not logged in
+            // l'utilisateur n'est même pas logué
             $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-            pathAfterLogin = next.originalPath;                     // save path that the user wants to access after the login
-            $location.path('/login');                               // redirect user to login page
+            // sauvegarder le chemin vers lequel l'utilisateur voulais être dirigé
+            pathAfterLogin = next.originalPath;                     
+            $location.path('/login');                               // aller à la page de login
 
             console.log('user is not logged in');
           }
@@ -142,24 +149,34 @@ angular
 
     });
 
-    // redirect to page after login
+    // capter les évenements de login
+    // loginSuccess
     $rootScope.$on(AUTH_EVENTS.loginSuccess, function () {
+      // pathAfterLogin contient le chemin vers lequel l'utilisateur voulais être dirigé après le login
       var path = pathAfterLogin;
-      pathAfterLogin = '/';
-      $location.path(path);
+      pathAfterLogin = '/'; // reset du chemin
+      $location.path(path); // diriger l'utilisateur à la vue qu'il voulais aller
     });
 
-    // redirect to main page after logout
+    // logoutSuccess
+    // aller à la page principale après le logout
     $rootScope.$on(AUTH_EVENTS.logoutSuccess, function () {
       $location.path('/#');
     });
 
+    // traiter le rafraichissement de la page
     $window.onbeforeunload = function () {
+      // garder le chemin actuel dans la sessionStorage
+      // sessionStorage est maintenu, même après le login
       $window.sessionStorage.setItem('path', $location.path());
     };
 
+    // vérifier si l'utilisateur est déjà logué, en observant la valeur de son cookie
+    // cette méthode permet de persister la connection d'utilisateur quand il rafraichit la page
     authenticationService.verifyCookies().then(function (hasCookie) {
+      // si l'utilisateur est déjà logué (il y a un cookie valide)
       if (hasCookie) {
+        // diriger l'utilisateur à la page où il était avant le rafraichissement de la page
         $location.path($window.sessionStorage.getItem('path'));
       }
     });

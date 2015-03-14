@@ -10,17 +10,27 @@
 angular.module('gestionContactApp')
   .controller('LoginCtrl', function ($scope, $rootScope, AUTH_EVENTS, authenticationService) {
 
+    // user information for the login
     $scope.credentials = {
       email: '',
       password: ''
     };
 
+    /**
+     * Function to perform the login
+     * 
+     * @param  {Object} credentials of the user (username and password)
+     */
     $scope.login = function (credentials) {
 
+      // all logic to perform authentication operations in the back-end is encapsulated
+      // in the authenticationService
       authenticationService.login(credentials).then(function (loginResult) {
         if (loginResult) {
 
           console.log('login success');
+          // broadcast message to the app, that will perform the correct route
+          // more information about the authentication events can be found in the app.js file
           $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
 
         } else {
@@ -37,29 +47,5 @@ angular.module('gestionContactApp')
       }); 
 
     };
-
-    // $scope.logout = function () {
-    //   authenticationService.logout().then(function () {
-    //     console.log('logout success');
-    //   }, function () {
-    //     console.log('logout error');
-    //   });
-    // }; 
-
-    // $scope.getCurrentUser = function () {
-    //   // $wakanda.$currentUser().then(function(user) {
-    //   //   console.log(user);
-    //   // });
-
-    //   $wakanda.$ds.ServiceAuthentication.getCurrentUser().then(function (result) {
-    //     console.log(result.result);
-    //   });
-    // }; 
-
-    // $scope.userBelongsTo = function () {
-    //   $wakanda.$currentUserBelongsTo('BusinessAnalyst').then(function (result) {
-    //     console.log(result);
-    //   });
-    // }; 
 
   });
