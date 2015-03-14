@@ -5,8 +5,12 @@ model.ServiceGestionUsers.methods.createUser = function(infos) {
 	
 	var user = new ds.User();
 
-	
-	
+	user.nom = infos.nom;
+	user.prenom = infos.prenom;
+	user.login = infos.login;
+	user.password = directory.computeHA1(user.login, infos.password);
+	user.roles = infos.roles.join(",");
+
 	var result = {
 		result: false,
 		message: "ERROR : Unknown"

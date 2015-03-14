@@ -15,7 +15,15 @@ angular.module('gestionContactApp')
     $scope.createUser = function () {
       if ($scope.user.password === $scope.passwordConfirm) {
         
-        $scope.user.roles = $scope.rolesString.split(',');
+        if ($scope.roleBusinessAnalyst) {
+          $scope.user.roles.push('BusinessAnalyst');
+        }
+        if ($scope.roleDataSteward) {
+          $scope.user.roles.push('DataSteward');
+        }
+        if ($scope.roleAdmin) {
+          $scope.user.roles.push('Admin');
+        }
 
         $wakanda.$ds.ServiceGestionUsers.createUser($scope.user).then(function (result) {
           if (result.result.result) {
@@ -32,7 +40,7 @@ angular.module('gestionContactApp')
         });
         
       } else {
-        alert('Password and Confirme password do not match!');
+        alert('Password and Confirm password do not match!');
       }
       // console.log($scope.user);
     };
@@ -46,6 +54,8 @@ angular.module('gestionContactApp')
         roles: []
       };
       $scope.passwordConfirm = '';
-      $scope.rolesString = '';
+      $scope.roleBusinessAnalyst = false;
+      $scope.roleDataSteward = false;
+      $scope.roleAdmin = false;
     }
   });

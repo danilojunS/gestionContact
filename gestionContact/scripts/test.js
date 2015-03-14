@@ -34,7 +34,7 @@ contact.save();*/
 //    item.forceExpire();
 //});
 
-//getUserSessions();
+getUserSessions();
 
 //var currentUserId = currentUser().ID;
 //if (currentUserId !== "00000000000000000000000000000000") {
@@ -75,15 +75,15 @@ contact.save();*/
 
 //currentSession();
 
-/*
-var newUser = {};
-newUser.nom = 'doe';
-newUser.prenom = 'jane';
-newUser.login = 'jane';
-newUser.password = 'a';
-newUser.roles = ['DataSteward'];
-ds.ServiceGestionUsers.createUser(newUser);
-*/
+
+//var newUser = {};
+//newUser.nom = 'Administrator';
+//newUser.prenom = 'Admin';
+//newUser.login = 'admin';
+//newUser.password = 'a';
+//newUser.roles = ['Admin'];
+//ds.ServiceGestionUsers.createUser(newUser);
+
 
 
 //var contact = new ds.Contact();
@@ -94,5 +94,3 @@ ds.ServiceGestionUsers.createUser(newUser);
 
 
 //contact.save();
-
-ds.User.find("login = " + 'john');
