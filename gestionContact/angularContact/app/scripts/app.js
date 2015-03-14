@@ -28,10 +28,10 @@ angular
     sessionTimeout: 'auth-session-timeout',         // Timeout atteint
     notAuthenticated: 'auth-not-authenticated',     // Utilisateur non authentifié
     notAuthorized: 'auth-not-authorized',           // Utilisateur non habilité
-    hasCookie: 'auth-has-cookie'                    // Utilisateur détient lecookie d'authent
   })
   .constant('USER_ROLES', {
     // Liste des roles proosibles pour un User
+    loggedUser: 'LoggedUser',    // role existant dans le front pour spécifier qu'une vue est visible par tous les roles, mais il faut être logué
     admin: 'Admin',
     businessAnalyst: 'BusinessAnalyst',
     dataSteward: 'DataSteward'
@@ -52,7 +52,7 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        authorizedRoles: '*'      
+        authorizedRoles: [USER_ROLES.loggedUser]      
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -62,7 +62,7 @@ angular
         templateUrl: 'views/contacts.html',
         controller: 'ContactsCtrl',
         resolve: routeResolver,
-        authorizedRoles: '*'
+        authorizedRoles: [USER_ROLES.loggedUser]
       })
       .when('/login', {
         templateUrl: 'views/login.html',
@@ -107,7 +107,9 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function ($route, $rootScope, $location, AUTH_EVENTS, authenticationService) {
+  .run(function ($route, $rootScope, $location, AUTH_EVENTS, authenticationService, USER_ROLES, $window) {
+
+    $rootScope.USER_ROLES = USER_ROLES;
 
     var pathAfterLogin = '/';  // path to where redirect the user after the login
 
@@ -152,13 +154,14 @@ angular
       $location.path('/#');
     });
 
-    // has cookie with session, only refresh page
-    $rootScope.$on(AUTH_EVENTS.hasCookie, function () {
-      var path = pathAfterLogin;
-      pathAfterLogin = '/';
-      $location.path(path);
-    });
+    $window.onbeforeunload = function () {
+      $window.sessionStorage.setItem('path', $location.path());
+    };
 
-    authenticationService.verifyCookies();
+    authenticationService.verifyCookies().then(function (hasCookie) {
+      if (hasCookie) {
+        $location.path($window.sessionStorage.getItem('path'));
+      }
+    });
 
   });

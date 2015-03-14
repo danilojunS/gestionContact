@@ -8,7 +8,7 @@
  * Service in the gestionContactApp.
  */
 angular.module('gestionContactApp')
-  .service('authenticationService', function ($rootScope, $http, $q, sessionService, $wakanda, AUTH_EVENTS) {
+  .service('authenticationService', function (sessionService, $wakanda, USER_ROLES) {
 
     var authService = {};
 
@@ -49,11 +49,12 @@ angular.module('gestionContactApp')
 
     authService.verifyCookies = function () {
       return $wakanda.init().then(function () {
-        $wakanda.$ds.ServiceAuthentication.getCurrentUser().then(function (response) {
+        return $wakanda.$ds.ServiceAuthentication.getCurrentUser().then(function (response) {
           if (response.result.result !== false) {
-            sessionService.create('', response.result.id, response.result.fullName, response.result.roles);
-            $rootScope.$broadcast(AUTH_EVENTS.hasCookie); 
+            sessionService.create('', response.result.id, response.result.fullName, response.result.roles); 
+            return true;
           }
+          return false;
         });
       });
     };
@@ -86,11 +87,15 @@ angular.module('gestionContactApp')
         authorizedRoles = [authorizedRoles];
       }
 
-      if (authorizedRoles.indexOf('*') !== -1) {
+      if (authorizedRoles.indexOf(USER_ROLES.loggedUser) !== -1) {
         return authService.isAuthenticated();
       }
-      
+
       var userRoles = sessionService.getUserRoles();
+
+      if (userRoles.indexOf(USER_ROLES.admin) !== -1) {
+        return true;
+      }
 
       for (var i = 0; i < userRoles.length; i++) {
         if (authorizedRoles.indexOf(userRoles[i]) !== -1) {
