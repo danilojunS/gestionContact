@@ -1,8 +1,13 @@
 <h2>Users</h2>
-
+<br>
+<user-form user="user"></user-form>
+<br>
+<h3>List of users</h3>
+<br>
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Login</th>
       <th>Nom Prénom</th>
       <th>Roles</th>
       <th>Actions</th>
@@ -10,9 +15,11 @@
   </thead>
   <tbody>
     <tr ng-repeat="user in users">
+      <td>{{user.login}}</td>
       <td>{{user.nom}} {{user.prenom}}</td>
       <td>{{user.roles.split(',')}}</td>
       <td>
+        <span class="button glyphicon glyphicon-pencil" style="cursor: pointer;" title="Modifier" ng-click="editUser(user)"></span>
         <span class="button glyphicon glyphicon-remove" style="cursor: pointer;" title="Supprimer" ng-click="deleteUser(user)"></span>
       </td>
     </tr>

@@ -68,8 +68,13 @@ model.ServiceGestionUsers.methods.modifyUser = function(infos) {
 
 	user.nom = infos.nom;
 	user.prenom = infos.prenom;
-	user.login = infos.login;
-	user.password = directory.computeHA1(user.login, infos.password);
+	if (user.password != infos.password) {
+		// only change the password if it has changed
+		// if we dont test this condition, the user password will be overwritten each time
+		// and the hash will be calculated over another hash, which will set the wrong password
+		// to the user
+		user.password = directory.computeHA1(user.login, infos.password);
+	}
 	user.roles = infos.roles.join(",");
 
 	
@@ -78,6 +83,15 @@ model.ServiceGestionUsers.methods.modifyUser = function(infos) {
 		message: "ERROR : Unknown"
 	};
 	
+	if(user.login != infos.login && ds.User.find("login = " + infos.login) !== null) {
+		result.message = "ERROR : Login already taken";
+		result.loginTaken = true;
+		return result;
+	}
+	
+	// can use the login
+	user.login = infos.login;
+
 	try {
 		user.save();
 		result.result = true;

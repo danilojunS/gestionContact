@@ -12,6 +12,43 @@ angular.module('gestionContactApp')
     // list of users
     $scope.users = $wakanda.$ds.User.$find({});
 
+    // user being created/updated
+    $scope.user = {
+      id: null,
+      nom: null,
+      prenom: null,
+      login: null,
+      password: null,
+      roles: []
+    };
+
+    // watch to update the user list each time an operation of
+    // creation/modification is executed
+    $scope.$watch('user', function () {
+      $scope.users = $wakanda.$ds.User.$find({});
+    });
+
+    /**
+     * Function to set the user to be edited
+     * 
+     * @param  {Object} user to be edited
+     */
+    $scope.editUser = function (user) {
+      console.log('Édition d utilisateur.');
+      // put the user information to be edited into the scope
+      $scope.user = {
+        id: user.ID,
+        nom: user.nom,
+        prenom: user.prenom,
+        login: user.login,
+        password: user.password,
+        roles: user.roles.split(',')
+      };
+      // this user information is then charged automatically
+      // into the directive userForm, because we injected
+      // the user into the scope of the directive
+    };
+
     /**
      * Function to delete a user from the back-end
      * 
